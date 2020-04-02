@@ -9,13 +9,9 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Status {
-
+public class Activity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
-
-    private String name;
-    private boolean available;
-    private int sortNumber;
+    private String descriptionOfActivity;
 }

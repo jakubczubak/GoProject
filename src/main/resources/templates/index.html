@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>CRM</title>
+    <link href="/css/styles.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+          crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <a class="nav-link" id="a">
+                        <div class="sb-nav-link-icon" id="projectlist"><i class="fas fa-project-diagram fa-sm" style="color: #007bff"></i></div>
+                        Project lists
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-plus-circle fa-sm" style="color: #007bff"></i></div>
+                        Adding a project
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users fa-sm" style="color: #007bff"></i></div>
+                        User lists
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-user-plus fa-sm" style="color: #007bff"></i></div>
+                        Add user
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list fa-sm" style="color: #007bff"></i></div>
+                        Status lists
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-plus-circle fa-sm" style="color: #007bff"></i></div>
+                        Adding status
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-exclamation fa-sm" style="color: #007bff"></i></div>
+                        List of priorities
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-plus-circle fa-sm" style="color: #007bff"></i></div>
+                        Adding priority
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table fa-sm" style="color: #007bff"></i></div>
+                        Report list
+                    </a>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-plus-circle fa-sm" style="color: #007bff"></i></div>
+                        Adding report
+                    </a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid">
+                <h1 style="display: inline-block" class="mt-4">Project Tracker Software</h1>
+
+         <div class="logout" id="logout"><i class="fas fa-power-off fa-2x"></i></div>
+
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">Recently created projects
+                    </li>
+                </ol>
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Creator</th>
+                        <th scope="col">Time</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">User activities</li>
+                </ol>
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Activity</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+    </div>
+</div>
+<script src="js/app.js"></script>
+
+</body>
+</html>
