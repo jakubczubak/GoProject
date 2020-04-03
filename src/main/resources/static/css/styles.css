@@ -676,6 +676,7 @@ pre code {
   float: right;
   padding-top:20px;
   color:#007bff;
+  cursor: pointer;
 }
 
 .col-2 {
