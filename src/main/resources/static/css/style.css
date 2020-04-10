@@ -72,9 +72,11 @@ body{
 }
 
 .wrapper .main_content .info {
-    margin: 20px;
-    color: #717171;
+    margin: 40px;
     line-height: 25px;
+    font-weight: bold;
+    font-size: 30px;
+    color: purple;
 }
 
 .btn{
@@ -96,5 +98,56 @@ body{
 .btn:hover{
     background-image: linear-gradient(to left, #0652DD,#12CBC4,#1289A7);
 
+}
 
+.input_section{
+    margin: 40px;
+    background: #F4F6F9;
+    padding: 80px;
+    text-align: center;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+.input_section h1{
+    font-size: 30px;
+    color: #888;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 400;
+}
+
+.name, .email{
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid;
+    color: #888;
+    padding: 10px 6px;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.name {
+    width: 270px;
+}
+.email {
+    width: 270px;
+}
+
+.input_section button{
+    background: none;
+    color: #70a1ff;
+    border: 1px solid #70a1ff;
+    padding: 12px 40px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: 0.4s linear;
+}
+
+.input_section button:hover{
+    background: #70a1ff;
+    color: #fff;
 }
