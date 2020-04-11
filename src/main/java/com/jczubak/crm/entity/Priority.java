@@ -14,6 +14,7 @@ public class Priority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean available;
+    private String name;
+
 
 }
