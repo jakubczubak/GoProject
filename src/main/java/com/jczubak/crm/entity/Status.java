@@ -16,6 +16,4 @@ public class Status {
     private Long id;
 
     private String name;
-    private boolean available;
-    private int sortNumber;
 }

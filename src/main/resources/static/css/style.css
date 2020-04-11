@@ -179,7 +179,19 @@ body{
     color: #ddd;
     padding: 10px 6px;
     font-size: 25px;
-    width: auto;
+    width: 350px;
+
+}
+.description {
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid;
+    color: #ddd;
+    padding: 10px 6px;
+    font-size: 25px;
+    width: 350px;
+    resize: none;
 
 }
 .inner-width button{
