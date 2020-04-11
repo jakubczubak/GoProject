@@ -10,4 +10,9 @@ public class HomeController {
     public String getHomePage(){
         return "dashboard";
     }
+
+    @GetMapping("/add")
+    public String addPriority(){
+        return "newPriority";
+    }
 }
