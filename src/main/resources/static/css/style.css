@@ -49,6 +49,17 @@ body{
     transition: 0.5s;
 }
 
+.container .error{
+    background: #3864f2;
+    padding: 20px;
+    display: grid;
+    font-size: 20px;
+    place-items: center;
+    text-align: center;
+    color: #fff;
+    transition: 0.5s;
+}
+
 .container .userData{
     background: #333;
     padding: 20px;

@@ -74,15 +74,16 @@
               <div class="inner-width">
                   <img src="fire.png">
                 <h1>create a new priority</h1>
-                  <input type="text" class="name" placeholder="Priority name"><br>
+                  <input id="priorityName" type="text" class="name" placeholder="Priority name"><br>
                   <button>Create</button>
               </div>
             </div>
         </div>
-        <div class="box">
+        <div id="priorityBox" class="box">
             <div class="content">
-                <img src="project.png">
-                <p>status</p>
+                <img id="priorityOK" src="tick.png" class="">
+                <img id="priorityError" class="hidden" src="problem.png">
+                <p id="priorityFeedback"></p>
             </div>
         </div>
         <div id="backPriorityButton" class="box back">

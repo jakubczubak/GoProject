@@ -11,6 +11,28 @@ backPriorityButton.onclick = function (ev) {
     document.getElementById("priorityMenu").className="hidden";
     document.getElementById("dashboard").className="main_content";
 }
+
+var priorityName = document.getElementById("priorityName");
+var priorityFeedback = document.getElementById("priorityFeedback");
+
+function checkPriorityName(minLength) {
+    if(priorityName.value.length<minLength){
+        document.getElementById("priorityBox").className="error";
+        document.getElementById("priorityOK").className="hidden";
+        document.getElementById("priorityError").className="";
+        priorityFeedback.textContent = 'Enter at least 5 characters!';
+    }else{
+        document.getElementById("priorityError").className="hidden";
+        document.getElementById("priorityOK").className="";
+        document.getElementById("priorityBox").className="box";
+        priorityFeedback.innerHTML='';
+
+    }
+}
+
+priorityName.addEventListener('blur', function (ev) {
+    checkPriorityName(5);
+},false);
 //STATUS SECTION
 var newStatus = document.getElementById("newStatus");
 var backStatusButton = document.getElementById("backStatusButton");
