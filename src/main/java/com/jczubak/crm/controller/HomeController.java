@@ -1,5 +1,4 @@
 package com.jczubak.crm.controller;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -11,8 +10,4 @@ public class HomeController {
         return "dashboard";
     }
 
-    @GetMapping("/add")
-    public String addPriority(){
-        return "newPriority";
-    }
 }
