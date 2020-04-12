@@ -209,3 +209,19 @@ body{
     background: #70a1ff;
     color: #ffffff;
 }
+::-webkit-scrollbar{
+    width: 6px
+}
+::-webkit-scrollbar-thumb{
+    background: #70a1ff;
+    border-radius: 6px;
+}
+
+.radiobutton p{
+    color:  #ddd;
+    font-size: 25px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
