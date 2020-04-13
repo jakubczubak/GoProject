@@ -12,7 +12,7 @@ backPriorityButton.onclick = function (ev) {
     document.getElementById("priorityMenu").className="hidden";
     document.getElementById("dashboard").className="main_content";
 }
-
+// -----------------------------------------------------------------------------------
 var priorityName = document.getElementById("priorityName");
 var priorityFeedback = document.getElementById("priorityFeedback");
 
@@ -34,30 +34,33 @@ function checkPriorityName(minLength) {
 priorityName.addEventListener('blur', function (ev) {
     checkPriorityName(5);
 },false);
+// -----------------------------------------------------------------------------------
 
 var prioritySendButton = document.getElementById("prioritySendButton");
 prioritySendButton.onclick = function () {
     if (priorityName.value.length<5){
         checkPriorityName(5)
     }else{
+
         var data = "{\"name\":" + "\"" + priorityName.value +"\"}";
+
         $.ajax({
             url: '/priority/add',
             data: data,
             contentType: "application/json",
             method: "PUT"
-        }).done(function () {
-
         });
+
+
         document.getElementById("priorityBox").className="success";
+
         setTimeout(function(){
             document.getElementById("priorityBox").className="box";
-        }, 1000);
+        }, 500);
         priorityName.value="";
     }
-
 }
-
+// -----------------------------------------------------------------------------------
 
 
 //STATUS SECTION
