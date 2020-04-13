@@ -143,6 +143,29 @@ backUserButton.onclick = function (ev) {
     document.getElementById("userMenu").className = "hidden";
     document.getElementById("dashboard").className = "main_content";
 }
+//---------------------------------------------------------------------------
+
+var statusName = document.getElementById("statusName");
+var statusFeedback = document.getElementById("statusFeedback");
+
+function checkPriorityName(minLength) {
+    if(statusName.value.length<minLength){
+        document.getElementById("statusBox").className="error";
+        document.getElementById("statusOK").className="hidden";
+        document.getElementById("statusError").className="";
+        statusFeedback.textContent = 'Enter at least 5 characters!';
+    }else{
+        document.getElementById("statusError").className="hidden";
+        document.getElementById("statusOK").className="";
+        document.getElementById("statusBox").className="box";
+        statusFeedback.innerHTML='';
+
+    }
+}
+
+statusName.addEventListener('blur', function (ev) {
+    checkPriorityName(5);
+},false);
 
 //PROJECT SECTION
 
