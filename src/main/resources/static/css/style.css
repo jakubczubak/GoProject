@@ -60,6 +60,17 @@ body{
     transition: 0.5s;
 }
 
+.container .success{
+    background: #91D925;
+    padding: 20px;
+    display: grid;
+    font-size: 20px;
+    place-items: center;
+    text-align: center;
+    color: #fff;
+    transition: 0.5s;
+}
+
 .container .userData{
     background: #333;
     padding: 20px;

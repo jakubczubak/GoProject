@@ -37,15 +37,25 @@ priorityName.addEventListener('blur', function (ev) {
 
 var prioritySendButton = document.getElementById("prioritySendButton");
 prioritySendButton.onclick = function () {
-    var data = "{\"name\":" + "\"" + priorityName.value +"\"}";
-    $.ajax({
-        url: '/priority/add',
-        data: data,
-        contentType: "application/json",
-        method: "PUT"
-    }).done(function () {
-        console.log("elo")
-    });
+    if (priorityName.value.length<5){
+        checkPriorityName(5)
+    }else{
+        var data = "{\"name\":" + "\"" + priorityName.value +"\"}";
+        $.ajax({
+            url: '/priority/add',
+            data: data,
+            contentType: "application/json",
+            method: "PUT"
+        }).done(function () {
+
+        });
+        document.getElementById("priorityBox").className="success";
+        setTimeout(function(){
+            document.getElementById("priorityBox").className="box";
+        }, 1000);
+        priorityName.value="";
+    }
+
 }
 
 
