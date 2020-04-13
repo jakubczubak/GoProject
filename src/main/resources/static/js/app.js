@@ -2,6 +2,7 @@
 var newPriority = document.getElementById("newPriority");
 var backPriorityButton = document.getElementById("backPriorityButton");
 
+
 newPriority.onclick = function (ev) {
     document.getElementById("dashboard").className="hidden";
     document.getElementById("priorityMenu").className="add_priority_content";
@@ -33,6 +34,22 @@ function checkPriorityName(minLength) {
 priorityName.addEventListener('blur', function (ev) {
     checkPriorityName(5);
 },false);
+
+var prioritySendButton = document.getElementById("prioritySendButton");
+prioritySendButton.onclick = function () {
+    var data = "{\"name\":" + "\"" + priorityName.value +"\"}";
+    $.ajax({
+        url: '/priority/add',
+        data: data,
+        contentType: "application/json",
+        method: "PUT"
+    }).done(function () {
+        console.log("elo")
+    });
+}
+
+
+
 //STATUS SECTION
 var newStatus = document.getElementById("newStatus");
 var backStatusButton = document.getElementById("backStatusButton");

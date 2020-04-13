@@ -4,7 +4,6 @@ import com.jczubak.crm.entity.Priority;
 import com.jczubak.crm.repository.PriorityRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/priority")
@@ -17,14 +16,10 @@ public class PriorityController {
     }
 
 
-    @PostMapping("/add")
+    @RequestMapping(value = "/add", produces = "application/json")
     public String addPriority(@RequestBody Priority priority){
         priorityRepository.save(priority);
         return "success";
     }
 
-    @GetMapping("/list")
-    public List<Priority> getListOfPriorites(){
-        return priorityRepository.findAll();
-    }
 }
