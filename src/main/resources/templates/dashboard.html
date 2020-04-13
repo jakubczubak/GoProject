@@ -104,15 +104,16 @@
                 <div class="inner-width">
                     <img src="project.png">
                     <h1>create a new status</h1>
-                    <input type="text" class="name" placeholder="Status name"><br>
-                    <button>Create</button>
+                    <input id="statusName" type="text" class="name" placeholder="Status name"><br>
+                    <button id="statusSendButton" >Create</button>
                 </div>
             </div>
         </div>
-        <div class="box">
+        <div id="statusBox" class="box">
             <div class="content">
-                <img src="project.png">
-                <p>status</p>
+                <img id="statusOK" src="tick.png" class="">
+                <img id="statusError" class="hidden" src="problem.png">
+                <p id="statusFeedback"></p>
             </div>
         </div>
         <div id="backStatusButton" class="box back">

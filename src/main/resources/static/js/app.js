@@ -77,6 +77,59 @@ backStatusButton.onclick = function (ev) {
     document.getElementById("statusMenu").className = "hidden";
     document.getElementById("dashboard").className = "main_content";
 }
+
+//---------------------------------------------------------------------------
+
+var statusName = document.getElementById("statusName");
+var statusFeedback = document.getElementById("statusFeedback");
+
+function checkPriorityName(minLength) {
+    if(statusName.value.length<minLength){
+        document.getElementById("statusBox").className="error";
+        document.getElementById("statusOK").className="hidden";
+        document.getElementById("statusError").className="";
+        statusFeedback.textContent = 'Enter at least 5 characters!';
+    }else{
+        document.getElementById("statusError").className="hidden";
+        document.getElementById("statusOK").className="";
+        document.getElementById("statusBox").className="box";
+        statusFeedback.innerHTML='';
+
+    }
+}
+
+statusName.addEventListener('blur', function (ev) {
+    checkPriorityName(5);
+},false);
+
+//---------------------------------------------------------------------------
+
+
+var statusSendButton = document.getElementById("statusSendButton");
+statusSendButton.onclick = function () {
+    if (statusName.value.length<5){
+        checkPriorityName(5)
+    }else{
+
+        var data = "{\"name\":" + "\"" + statusName.value +"\"}";
+
+        $.ajax({
+            url: '/status/add',
+            data: data,
+            contentType: "application/json",
+            method: "PUT"
+        });
+
+
+        document.getElementById("statusBox").className="success";
+
+        setTimeout(function(){
+            document.getElementById("statusBox").className="box";
+        }, 500);
+        statusName.value="";
+    }
+}
+
 //USER SECTION
 var newUser = document.getElementById("newUser");
 var backUserButton = document.getElementById("backUserButton");
