@@ -83,7 +83,7 @@ backStatusButton.onclick = function (ev) {
 var statusName = document.getElementById("statusName");
 var statusFeedback = document.getElementById("statusFeedback");
 
-function checkPriorityName(minLength) {
+function checkStatusName(minLength) {
     if(statusName.value.length<minLength){
         document.getElementById("statusBox").className="error";
         document.getElementById("statusOK").className="hidden";
@@ -99,7 +99,7 @@ function checkPriorityName(minLength) {
 }
 
 statusName.addEventListener('blur', function (ev) {
-    checkPriorityName(5);
+    checkStatusName(5);
 },false);
 
 //---------------------------------------------------------------------------
@@ -145,27 +145,57 @@ backUserButton.onclick = function (ev) {
 }
 //---------------------------------------------------------------------------
 
-var statusName = document.getElementById("statusName");
-var statusFeedback = document.getElementById("statusFeedback");
+var userLogin = document.getElementById("userLogin");
+var userName = document.getElementById("userName");
+var userSurname = document.getElementById("userSurname");
+var userPassword = document.getElementById("userPassword");
+var userRepassword = document.getElementById("userRepassword");
+var userFeedback = document.getElementById("userFeedback");
+var userSendButton = document.getElementById("userSendButton");
 
-function checkPriorityName(minLength) {
-    if(statusName.value.length<minLength){
-        document.getElementById("statusBox").className="error";
-        document.getElementById("statusOK").className="hidden";
-        document.getElementById("statusError").className="";
-        statusFeedback.textContent = 'Enter at least 5 characters!';
+function checkUserFormLength(el,minLength) {
+    if(el.value.length<minLength){
+        document.getElementById("userBox").className="error";
+        document.getElementById("userOK").className="hidden";
+        document.getElementById("userError").className="";
+        userFeedback.textContent=(el.name + " min. " + minLength  + " characters");
+
     }else{
-        document.getElementById("statusError").className="hidden";
-        document.getElementById("statusOK").className="";
-        document.getElementById("statusBox").className="box";
-        statusFeedback.innerHTML='';
+        document.getElementById("userError").className="hidden";
+        document.getElementById("userOK").className="";
+        document.getElementById("userBox").className="box";
+        userFeedback.innerHTML='';
 
     }
 }
 
-statusName.addEventListener('blur', function (ev) {
-    checkPriorityName(5);
+userLogin.addEventListener('blur', function (ev) {
+   checkUserFormLength(userLogin,5);
 },false);
+
+userName.addEventListener('blur', function (ev) {
+    checkUserFormLength(userName,3);
+},false);
+
+userSurname.addEventListener('blur', function (ev) {
+    checkUserFormLength(userSurname,3);
+},false);
+
+userPassword.addEventListener('blur', function (ev) {
+    checkUserFormLength(userPassword,6);
+},false);
+
+userRepassword.addEventListener('blur',passwordComparison,false);
+
+function passwordComparison(){
+    if(userPassword!=userRepassword){
+        document.getElementById("userBox").className="error";
+        document.getElementById("userOK").className="hidden";
+        document.getElementById("userError").className="";
+        userFeedback.textContent="Passwords are not the same!";
+    }
+}
+
 
 //PROJECT SECTION
 
