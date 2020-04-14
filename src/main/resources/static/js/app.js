@@ -6,6 +6,7 @@ var backPriorityButton = document.getElementById("backPriorityButton");
 newPriority.onclick = function (ev) {
     document.getElementById("dashboard").className="hidden";
     document.getElementById("priorityMenu").className="add_priority_content";
+
 }
 
 backPriorityButton.onclick = function (ev) {
@@ -151,7 +152,6 @@ var userSurname = document.getElementById("userSurname");
 var userPassword = document.getElementById("userPassword");
 var userRepassword = document.getElementById("userRepassword");
 var userFeedback = document.getElementById("userFeedback");
-var userSendButton = document.getElementById("userSendButton");
 
 function checkUserFormLength(el,minLength) {
     if(el.value.length<minLength){
@@ -185,17 +185,48 @@ userPassword.addEventListener('blur', function (ev) {
     checkUserFormLength(userPassword,6);
 },false);
 
-userRepassword.addEventListener('blur',passwordComparison,false);
-
 function passwordComparison(){
-    if(userPassword!=userRepassword){
+    if(userPassword.value!=userRepassword.value){
         document.getElementById("userBox").className="error";
         document.getElementById("userOK").className="hidden";
         document.getElementById("userError").className="";
         userFeedback.textContent="Passwords are not the same!";
     }
 }
+//
 
+var userSendButton = document.getElementById("userSendButton");
+
+userSendButton.onclick = function () {
+    if (userLogin.value.length<5){
+        checkUserFormLength(userLogin,5);
+    }else if(userName.value.length<3){
+        checkUserFormLength(userName,3);
+    }else if(userSurname.value.length<3){
+        checkUserFormLength(userSurname,3);
+    }else if(userPassword.value.length<6){
+        checkUserFormLength(userPassword,6);
+    }
+        else{
+
+        var myJson = JSON.stringify({name: userLogin});
+
+        $.ajax({
+            url: '/status/add',
+            data: data,
+            contentType: "application/json",
+            method: "PUT"
+        });
+
+
+        document.getElementById("statusBox").className="success";
+
+        setTimeout(function(){
+            document.getElementById("statusBox").className="box";
+        }, 500);
+        statusName.value="";
+    }
+}
 
 //PROJECT SECTION
 
