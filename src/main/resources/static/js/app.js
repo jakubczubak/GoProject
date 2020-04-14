@@ -108,7 +108,7 @@ statusName.addEventListener('blur', function (ev) {
 var statusSendButton = document.getElementById("statusSendButton");
 statusSendButton.onclick = function () {
     if (statusName.value.length<5){
-        checkPriorityName(5)
+        checkStatusName(5)
     }else{
 
         var data = "{\"name\":" + "\"" + statusName.value +"\"}";
