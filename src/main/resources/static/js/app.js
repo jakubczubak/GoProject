@@ -186,7 +186,7 @@ userPassword.addEventListener('blur', function (ev) {
 },false);
 
 function passwordComparison(){
-    if(userPassword.value!=userRepassword.value){
+    if(userPassword.value!==userRepassword.value){
         document.getElementById("userBox").className="error";
         document.getElementById("userOK").className="hidden";
         document.getElementById("userError").className="";
@@ -206,27 +206,33 @@ userSendButton.onclick = function () {
         checkUserFormLength(userSurname,3);
     }else if(userPassword.value.length<6){
         checkUserFormLength(userPassword,6);
-    }
-        else{
+    }else if(userPassword.value!==userRepassword.value){
+        passwordComparison();
+    } else{
 
-        var myJson = JSON.stringify({name: userLogin});
+        var data = JSON.stringify({login:userLogin.value, name:userName.value, surname:userSurname.value, password:userPassword.value});
 
         $.ajax({
-            url: '/status/add',
+            url: '/users/add',
             data: data,
             contentType: "application/json",
             method: "PUT"
         });
 
 
-        document.getElementById("statusBox").className="success";
+        document.getElementById("userBox").className="success";
 
         setTimeout(function(){
-            document.getElementById("statusBox").className="box";
+            document.getElementById("userBox").className="box";
         }, 500);
-        statusName.value="";
+
+        userName.value="";
+        userLogin.value="";
+        userSurname.value="";
+        userPassword.value="";
+        userRepassword.value="";
     }
-}
+};
 
 //PROJECT SECTION
 
