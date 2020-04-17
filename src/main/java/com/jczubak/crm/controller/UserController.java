@@ -4,9 +4,12 @@ import com.jczubak.crm.entity.Status;
 import com.jczubak.crm.entity.User;
 import com.jczubak.crm.repository.StatusRepository;
 import com.jczubak.crm.repository.UserRepository;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -23,6 +26,11 @@ public class UserController {
     public String addStatus(@RequestBody User user){
        userRepository.save(user);
         return "success";
+    }
+
+    @GetMapping("/list")
+    public List<User> getUserList(){
+        return userRepository.findAll();
     }
 
 }

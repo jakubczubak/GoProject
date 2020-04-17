@@ -2,9 +2,12 @@ package com.jczubak.crm.controller;
 
 import com.jczubak.crm.entity.Status;
 import com.jczubak.crm.repository.StatusRepository;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -23,4 +26,8 @@ public class StatusController {
         return "success";
     }
 
+    @GetMapping("/list")
+    public List<Status> getStatusList(){
+        return statusRepository.findAll();
+    }
 }
