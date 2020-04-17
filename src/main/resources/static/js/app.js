@@ -318,3 +318,42 @@ projectSite.addEventListener('blur',function (ev) {
         projectFeedback.textContent=("Incorrect URL");
     }
 });
+
+//---------------------------------------------------------------------------
+
+var projectSendButton = document.getElementById("projectSendButton");
+
+projectSendButton.onclick = function (ev) {
+    if(projectName.value.length<5){
+        checkProjectFormLength(projectName,5);
+    }else if(!validURL(projectSite.value)){
+        document.getElementById("projectBox").className="error";
+        document.getElementById("projectOK").className="hidden";
+        document.getElementById("projectError").className="";
+        projectFeedback.textContent=("Incorrect URL");
+    }else if(projectDescription.value.length>30){
+        checkDescriptionLength(projectDescription,30);
+    }else{
+
+        var data = JSON.stringify({name:projectName.value, description:projectDescription.value, site:projectSite.value});
+
+        $.ajax({
+            url: '/projects/add',
+            data: data,
+            contentType: "application/json",
+            method: "PUT"
+        });
+
+
+        document.getElementById("projectBox").className="success";
+
+        setTimeout(function(){
+            document.getElementById("projectBox").className="box";
+        }, 500);
+
+        projectName.value="";
+        projectSite.value="";
+       projectDescription.value="";
+
+    }
+};

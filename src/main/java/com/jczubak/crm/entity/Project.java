@@ -30,8 +30,9 @@ public class Project {
     createdOn = LocalDateTime.now();
   }
 
-  public void setIdentifier(String identifier){
-    this.identifier=ProjectService.removeAccents(identifier);
+
+  public void setIdentifier(){
+    this.identifier=ProjectService.removeAccents(this.name);
   }
 
 
