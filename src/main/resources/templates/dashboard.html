@@ -165,17 +165,18 @@
                 <div class="inner-width">
                     <img src="project-management.png">
                     <h1>create a new project</h1>
-                    <input type="text" class="description" placeholder="Project name">
-                    <input type="text" class="description" placeholder="Site"><br>
-                    <textarea class="description" placeholder="Description" rows="6" ></textarea><br>
-                    <button>Create</button>
+                    <input type="text" id="projectName" name="Project name" class="description" placeholder="Project name">
+                    <input type="text" id="projectSite" name="Project site" class="description" placeholder="Site"><br>
+                    <textarea id="projectDescription" name="Project description" class="description" placeholder="Description" rows="6" ></textarea><br>
+                    <button id="projectSendButton">Create</button>
                 </div>
             </div>
         </div>
-        <div class="box">
+        <div id="projectBox" class="box">
             <div class="content">
-                <img src="project.png">
-                <p>status</p>
+                <img id="projectOK" src="tick.png" class="">
+                <img id="projectError" class="hidden" src="problem.png">
+                <p id="projectFeedback"></p>
             </div>
         </div>
         <div id="backProjectButton" class="box back">

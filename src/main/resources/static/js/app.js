@@ -7,12 +7,12 @@ newPriority.onclick = function (ev) {
     document.getElementById("dashboard").className="hidden";
     document.getElementById("priorityMenu").className="add_priority_content";
 
-}
+};
 
 backPriorityButton.onclick = function (ev) {
     document.getElementById("priorityMenu").className="hidden";
     document.getElementById("dashboard").className="main_content";
-}
+};
 // -----------------------------------------------------------------------------------
 var priorityName = document.getElementById("priorityName");
 var priorityFeedback = document.getElementById("priorityFeedback");
@@ -60,7 +60,7 @@ prioritySendButton.onclick = function () {
         }, 500);
         priorityName.value="";
     }
-}
+};
 // -----------------------------------------------------------------------------------
 
 
@@ -72,12 +72,12 @@ newStatus.onclick = function (ev) {
     document.getElementById("dashboard").className = "hidden";
     document.getElementById("statusMenu").className = "add_priority_content";
 
-}
+};
 
 backStatusButton.onclick = function (ev) {
     document.getElementById("statusMenu").className = "hidden";
     document.getElementById("dashboard").className = "main_content";
-}
+};
 
 //---------------------------------------------------------------------------
 
@@ -129,7 +129,7 @@ statusSendButton.onclick = function () {
         }, 500);
         statusName.value="";
     }
-}
+};
 
 //USER SECTION
 var newUser = document.getElementById("newUser");
@@ -138,12 +138,12 @@ var backUserButton = document.getElementById("backUserButton");
 newUser.onclick = function (ev) {
     document.getElementById("dashboard").className = "hidden";
     document.getElementById("userMenu").className = "add_priority_content";
-}
+};
 
 backUserButton.onclick = function (ev) {
     document.getElementById("userMenu").className = "hidden";
     document.getElementById("dashboard").className = "main_content";
-}
+};
 //---------------------------------------------------------------------------
 
 var userLogin = document.getElementById("userLogin");
@@ -242,9 +242,79 @@ var backProjectButton = document.getElementById("backProjectButton");
 newProject.onclick = function (ev) {
     document.getElementById("dashboard").className = "hidden";
     document.getElementById("projectMenu").className = "add_priority_content";
-}
+};
 
 backProjectButton.onclick = function (ev) {
     document.getElementById("projectMenu").className="hidden";
     document.getElementById("dashboard").className="main_content";
+};
+
+//---------------------------------------------------------------------------
+
+var projectName = document.getElementById("projectName");
+var projectSite = document.getElementById("projectSite");
+var projectDescription = document.getElementById("projectDescription");
+var projectFeedback = document.getElementById("projectFeedback");
+
+function checkProjectFormLength(el, minLength) {
+    if(el.value.length<minLength){
+        document.getElementById("projectBox").className="error";
+        document.getElementById("projectOK").className="hidden";
+        document.getElementById("projectError").className="";
+        projectFeedback.textContent=(el.name + " min. " + minLength  + " characters");
+
+
+    }else{
+        document.getElementById("projectError").className="hidden";
+        document.getElementById("projectOK").className="";
+        document.getElementById("projectBox").className="box";
+        projectFeedback.innerHTML='';
+    }
 }
+
+function checkDescriptionLength(el,maxLength){
+    if(el.value.length>maxLength){
+        document.getElementById("projectBox").className="error";
+        document.getElementById("projectOK").className="hidden";
+        document.getElementById("projectError").className="";
+        projectFeedback.textContent=(el.name + " max. " + maxLength  + " characters");
+    }else{
+    document.getElementById("projectError").className="hidden";
+    document.getElementById("projectOK").className="";
+    document.getElementById("projectBox").className="box";
+    projectFeedback.innerHTML='';
+}
+}
+
+function validURL(str) {
+    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    return !!pattern.test(str);
+}
+
+projectName.addEventListener('blur', function (ev) {
+    checkProjectFormLength(projectName,5);
+},false);
+
+projectDescription.addEventListener('blur', function (ev) {
+    checkDescriptionLength(projectDescription,30);
+},false);
+
+projectSite.addEventListener('blur',function (ev) {
+
+    if(validURL(projectSite.value)){
+        document.getElementById("projectError").className="hidden";
+        document.getElementById("projectOK").className="";
+        document.getElementById("projectBox").className="box";
+        projectFeedback.innerHTML='';
+    }else{
+        document.getElementById("projectBox").className="error";
+        document.getElementById("projectOK").className="hidden";
+        document.getElementById("projectError").className="";
+        projectFeedback.textContent=("Incorrect URL");
+    }
+});
