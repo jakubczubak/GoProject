@@ -247,3 +247,25 @@ body{
     font-weight: 400;
     text-transform: uppercase;
 }
+
+table{
+    font-size: 25px;
+    color:  #ddd;
+    width: 400px;
+
+}
+
+th{
+    text-align: left;
+    padding: 10px;
+    font-weight: 400;
+}
+td{
+    text-align: left;
+    font-weight: 300;
+}
+
+td img {
+    margin-right: 15px;
+    margin-top: 10px;
+}

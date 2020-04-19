@@ -367,3 +367,20 @@ projectSendButton.onclick = function (ev) {
 
     }
 };
+
+//STATUS LIST SECTION
+
+var statusList = document.getElementById("statusList");
+var backStatusListButton = document.getElementById("backStatusListButton");
+
+
+statusList.onclick = function (ev) {
+    document.getElementById("dashboard").className = "hidden";
+    document.getElementById("statusListMenu").className = "add_priority_content";
+
+};
+
+backStatusListButton.onclick = function (ev) {
+    document.getElementById("statusListMenu").className = "hidden";
+    document.getElementById("dashboard").className = "main_content";
+};
