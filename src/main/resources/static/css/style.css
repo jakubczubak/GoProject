@@ -258,7 +258,7 @@ table{
 th{
     text-align: left;
     padding: 10px;
-    font-weight: 400;
+    font-weight: 500;
 }
 td{
     text-align: left;
@@ -269,3 +269,4 @@ td img {
     margin-right: 15px;
     margin-top: 10px;
 }
+

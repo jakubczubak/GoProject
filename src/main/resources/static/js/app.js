@@ -402,9 +402,8 @@ statusList.onclick = function (ev) {
                 var cell4 = document.createElement("td");
 
                 var img0 = document.createElement("img");
-                var img1 = document.createElement("img");
                 img0.setAttribute("src","eraser.png");
-                img1.setAttribute("src","loop.png");
+
 
                 var cellText0 = document.createTextNode(i);
                 var cellText1 = document.createTextNode(statusListArray[i].name);
@@ -412,7 +411,6 @@ statusList.onclick = function (ev) {
                 cell0.appendChild(cellText0);
                 cell1.appendChild(cellText1);
                 cell3.appendChild(img0);
-                cell3.appendChild(img1);
 
                 row.appendChild(cell0);
                 row.appendChild(cell1);
