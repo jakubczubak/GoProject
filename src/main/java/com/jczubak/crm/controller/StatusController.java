@@ -2,10 +2,7 @@ package com.jczubak.crm.controller;
 
 import com.jczubak.crm.entity.Status;
 import com.jczubak.crm.repository.StatusRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,11 @@ public class StatusController {
     @GetMapping("/list")
     public List<Status> getStatusList(){
         return statusRepository.findAll();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteStatusByID(@PathVariable Long id){
+        statusRepository.deleteById(id);
+        return "success";
     }
 }

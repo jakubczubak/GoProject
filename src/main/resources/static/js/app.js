@@ -373,12 +373,7 @@ projectSendButton.onclick = function (ev) {
 var statusList = document.getElementById("statusList");
 var backStatusListButton = document.getElementById("backStatusListButton");
 
-
-statusList.onclick = function (ev) {
-    document.getElementById("dashboard").className = "hidden";
-    document.getElementById("statusListMenu").className = "add_priority_content";
-
-
+function createTable(){
     $.ajax({
         url: "/status/list",
         data: {},
@@ -394,7 +389,7 @@ statusList.onclick = function (ev) {
         for(var i =0 ;  i <statusListArray.length ; i++){
             var row = document.createElement("tr");
             for(var j = 0 ; j < 1 ; j++){
-
+                console.log(statusListArray[0].id);
                 var cell0 = document.createElement("th");
                 var cell1 = document.createElement("td");
                 var cell2 = document.createElement("td");
@@ -402,6 +397,15 @@ statusList.onclick = function (ev) {
                 var cell4 = document.createElement("td");
 
                 var img0 = document.createElement("img");
+                img0.addEventListener("click", function (ev1) {
+                    $.ajax({
+                        url: '/status/delete/' + statusListArray[0].id,
+                        type: 'DELETE',
+                        success: function(result) {
+                            createTable()
+                        }
+                    });
+                })
                 img0.setAttribute("src","eraser.png");
 
 
@@ -422,7 +426,14 @@ statusList.onclick = function (ev) {
     }).fail(function(xhr,status,err) {
     }).always(function(xhr,status) {
     });
-};
+
+}
+statusList.onclick = function (ev) {
+    document.getElementById("dashboard").className = "hidden";
+    document.getElementById("statusListMenu").className = "add_priority_content";
+
+    createTable();
+}
 
 backStatusListButton.onclick = function (ev) {
     document.getElementById("statusListMenu").className = "hidden";
