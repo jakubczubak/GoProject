@@ -378,6 +378,52 @@ statusList.onclick = function (ev) {
     document.getElementById("dashboard").className = "hidden";
     document.getElementById("statusListMenu").className = "add_priority_content";
 
+
+    $.ajax({
+        url: "/status/list",
+        data: {},
+        type: "GET",
+        dataType: "json"
+    }).done(function(result) {
+
+
+        var tbody = document.getElementById("statusListTableBody");
+        tbody.innerHTML="";
+        var statusListArray = result;
+
+        for(var i =0 ;  i <statusListArray.length ; i++){
+            var row = document.createElement("tr");
+            for(var j = 0 ; j < 1 ; j++){
+
+                var cell0 = document.createElement("th");
+                var cell1 = document.createElement("td");
+                var cell2 = document.createElement("td");
+                var cell3 = document.createElement("td");
+                var cell4 = document.createElement("td");
+
+                var img0 = document.createElement("img");
+                var img1 = document.createElement("img");
+                img0.setAttribute("src","eraser.png");
+                img1.setAttribute("src","loop.png");
+
+                var cellText0 = document.createTextNode(i);
+                var cellText1 = document.createTextNode(statusListArray[i].name);
+
+                cell0.appendChild(cellText0);
+                cell1.appendChild(cellText1);
+                cell3.appendChild(img0);
+                cell3.appendChild(img1);
+
+                row.appendChild(cell0);
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                row.appendChild(cell3);
+            }
+            tbody.appendChild(row);
+        }
+    }).fail(function(xhr,status,err) {
+    }).always(function(xhr,status) {
+    });
 };
 
 backStatusListButton.onclick = function (ev) {
