@@ -270,3 +270,7 @@ td img {
     margin-top: 10px;
 }
 
+.maxHeight{
+    overflow: auto;
+    height: 700px;
+}
