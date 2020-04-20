@@ -373,7 +373,7 @@ projectSendButton.onclick = function (ev) {
 var statusList = document.getElementById("statusList");
 var backStatusListButton = document.getElementById("backStatusListButton");
 
-function createTable(){
+function createStatusTable(){
     $.ajax({
         url: "/status/list",
         data: {},
@@ -402,7 +402,13 @@ function createTable(){
                         url: '/status/delete/' + statusListArray[0].id,
                         type: 'DELETE',
                         success: function(result) {
-                            createTable()
+                            createStatusTable();
+
+                            document.getElementById("statusListBox").className = "success";
+
+                            setTimeout(function () {
+                                document.getElementById("statusListBox").className = "box";
+                            }, 500);
                         }
                     });
                 })
@@ -432,7 +438,7 @@ statusList.onclick = function (ev) {
     document.getElementById("dashboard").className = "hidden";
     document.getElementById("statusListMenu").className = "add_priority_content";
 
-    createTable();
+    createStatusTable();
 }
 
 backStatusListButton.onclick = function (ev) {
