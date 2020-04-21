@@ -373,22 +373,24 @@ projectSendButton.onclick = function (ev) {
 var statusList = document.getElementById("statusList");
 var backStatusListButton = document.getElementById("backStatusListButton");
 
-function createStatusTable(){
+function createStatusTable() {
     $.ajax({
         url: "/status/list",
         data: {},
         type: "GET",
         dataType: "json"
-    }).done(function(result) {
+    }).done(function (result) {
 
 
         var tbody = document.getElementById("statusListTableBody");
-        tbody.innerHTML="";
+        tbody.innerHTML = "";
+
+
         var statusListArray = result;
 
-        for(var i =0 ;  i <statusListArray.length ; i++){
+        for (var i = 0; i < statusListArray.length; i++) {
             var row = document.createElement("tr");
-            for(var j = 0 ; j < 1 ; j++){
+            for (var j = 0; j < 1; j++) {
                 console.log(statusListArray[0].id);
                 var cell0 = document.createElement("th");
                 var cell1 = document.createElement("td");
@@ -401,7 +403,7 @@ function createStatusTable(){
                     $.ajax({
                         url: '/status/delete/' + statusListArray[0].id,
                         type: 'DELETE',
-                        success: function(result) {
+                        success: function (result) {
                             createStatusTable();
 
                             document.getElementById("statusListBox").className = "success";
@@ -412,7 +414,7 @@ function createStatusTable(){
                         }
                     });
                 })
-                img0.setAttribute("src","eraser.png");
+                img0.setAttribute("src", "eraser.png");
 
 
                 var cellText0 = document.createTextNode(i);
@@ -429,11 +431,12 @@ function createStatusTable(){
             }
             tbody.appendChild(row);
         }
-    }).fail(function(xhr,status,err) {
-    }).always(function(xhr,status) {
+    }).fail(function (xhr, status, err) {
+    }).always(function (xhr, status) {
     });
 
 }
+
 statusList.onclick = function (ev) {
     document.getElementById("dashboard").className = "hidden";
     document.getElementById("statusListMenu").className = "add_priority_content";
@@ -445,3 +448,6 @@ backStatusListButton.onclick = function (ev) {
     document.getElementById("statusListMenu").className = "hidden";
     document.getElementById("dashboard").className = "main_content";
 };
+
+
+//LIST OF PRIORITIES  SECTION
