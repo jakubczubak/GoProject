@@ -4,10 +4,7 @@ import com.jczubak.crm.entity.Status;
 import com.jczubak.crm.entity.User;
 import com.jczubak.crm.repository.StatusRepository;
 import com.jczubak.crm.repository.UserRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +28,12 @@ public class UserController {
     @GetMapping("/list")
     public List<User> getUserList(){
         return userRepository.findAll();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteUsersByID(@PathVariable Long id){
+        userRepository.deleteById(id);
+        return "success";
     }
 
 }

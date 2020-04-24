@@ -534,3 +534,88 @@ listOfPrioritiesButton.onclick = function (ev) {
 
 //LIST OF USERS  SECTION
 
+var userList = document.getElementById("userList");
+var usersButton = document.getElementById("usersButton");
+
+function createUsersTable() {
+    $.ajax({
+        url: "/users/list",
+        data: {},
+        type: "GET",
+        dataType: "json"
+    }).done(function (result) {
+
+
+        var tbody = document.getElementById("usersTableBody");
+        tbody.innerHTML = "";
+
+
+        var usersListArray = result;
+
+        for (var i = 0; i < usersListArray.length; i++) {
+            var row = document.createElement("tr");
+            for (var j = 0; j < 1; j++) {
+                var cell0 = document.createElement("th");
+                var cell1 = document.createElement("td");
+                var cell2 = document.createElement("td");
+                var cell3 = document.createElement("td");
+                var cell4 = document.createElement("td");
+                var cell5 = document.createElement("td");
+
+                var img0 = document.createElement("img");
+                img0.addEventListener("click", function (ev1) {
+                    $.ajax({
+                        url: '/users/delete/' + usersListArray[0].id,
+                        type: 'DELETE',
+                        success: function (result) {
+
+                            createUsersTable();
+
+                            document.getElementById("usersBox").className = "success";
+
+                            setTimeout(function () {
+                                document.getElementById("usersBox").className = "box";
+                            }, 500);
+                        }
+                    });
+                });
+                    img0.setAttribute("src", "eraser.png");
+
+
+                var cellText0 = document.createTextNode(i);
+                var cellText1 = document.createTextNode(usersListArray[i].login);
+                var cellText2 = document.createTextNode(usersListArray[i].name);
+                var cellText3 = document.createTextNode(usersListArray[i].surname);
+
+                cell0.appendChild(cellText0);
+                cell1.appendChild(cellText1);
+                cell2.appendChild(cellText2);
+                cell3.appendChild(cellText3);
+                cell5.appendChild(img0);
+
+                row.appendChild(cell0);
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                row.appendChild(cell3);
+                row.appendChild(cell4);
+                row.appendChild(cell5);
+            }
+            tbody.appendChild(row);
+        }
+    }).fail(function (xhr, status, err) {
+    }).always(function (xhr, status) {
+    });
+
+}
+
+userList.onclick = function (ev) {
+    document.getElementById("dashboard").className = "hidden";
+    document.getElementById("users").className = "add_priority_content";
+
+    createUsersTable();
+};
+
+usersButton.onclick = function (ev) {
+    document.getElementById("users").className = "hidden";
+    document.getElementById("dashboard").className = "main_content";
+};
