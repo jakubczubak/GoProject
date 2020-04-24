@@ -29,4 +29,10 @@ public class PriorityController {
         return priorityRepository.findAll();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public String deletePriorityByID(@PathVariable Long id){
+        priorityRepository.deleteById(id);
+        return "success";
+    }
+
 }

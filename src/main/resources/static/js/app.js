@@ -451,3 +451,86 @@ backStatusListButton.onclick = function (ev) {
 
 
 //LIST OF PRIORITIES  SECTION
+
+function createListOfPrioritiesTable() {
+    $.ajax({
+        url: "/priority/list",
+        data: {},
+        type: "GET",
+        dataType: "json"
+    }).done(function (result) {
+
+
+        var tbody = document.getElementById("listOfPrioritiesTableBody");
+        tbody.innerHTML = "";
+
+
+        var prioritiesListArray = result;
+
+        for (var i = 0; i < prioritiesListArray.length; i++) {
+            var row = document.createElement("tr");
+            for (var j = 0; j < 1; j++) {
+                console.log(prioritiesListArray[0].id);
+                var cell0 = document.createElement("th");
+                var cell1 = document.createElement("td");
+                var cell2 = document.createElement("td");
+                var cell3 = document.createElement("td");
+                var cell4 = document.createElement("td");
+
+                var img0 = document.createElement("img");
+                img0.addEventListener("click", function (ev1) {
+                    $.ajax({
+                        url: '/priority/delete/' + prioritiesListArray[0].id,
+                        type: 'DELETE',
+                        success: function (result) {
+
+                            createListOfPrioritiesTable();
+
+                            document.getElementById("listOfPrioritiesBox").className = "success";
+
+                            setTimeout(function () {
+                                document.getElementById("listOfPrioritiesBox").className = "box";
+                            }, 500);
+                        }
+                    });
+                });
+                img0.setAttribute("src", "eraser.png");
+
+
+                var cellText0 = document.createTextNode(i);
+                var cellText1 = document.createTextNode(prioritiesListArray[i].name);
+
+                cell0.appendChild(cellText0);
+                cell1.appendChild(cellText1);
+                cell3.appendChild(img0);
+
+                row.appendChild(cell0);
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                row.appendChild(cell3);
+            }
+            tbody.appendChild(row);
+        }
+    }).fail(function (xhr, status, err) {
+    }).always(function (xhr, status) {
+    });
+
+}
+
+var priorities = document.getElementById("priorities");
+var listOfPrioritiesButton = document.getElementById("listOfPrioritiesButton");
+
+priorities.onclick = function (ev) {
+    document.getElementById("dashboard").className = "hidden";
+    document.getElementById("listOfPriorities").className = "add_priority_content";
+
+    createListOfPrioritiesTable();
+};
+
+listOfPrioritiesButton.onclick = function (ev) {
+    document.getElementById("listOfPriorities").className = "hidden";
+    document.getElementById("dashboard").className = "main_content";
+};
+
+//LIST OF USERS  SECTION
+
