@@ -273,3 +273,11 @@ td img {
     overflow: auto;
     height: 700px;
 }
+
+.myText{
+    font-size: 30px;
+    color:  #fff;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
