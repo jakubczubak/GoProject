@@ -619,3 +619,19 @@ usersButton.onclick = function (ev) {
     document.getElementById("users").className = "hidden";
     document.getElementById("dashboard").className = "main_content";
 };
+
+//PROJECTS  SECTION
+
+var projects = document.getElementById("projects");
+var projectsButton = document.getElementById("projectsButton");
+
+projects.onclick = function (ev) {
+    document.getElementById("dashboard").className = "hidden";
+    document.getElementById("projectsList").className = "add_priority_content";
+};
+
+projectsButton.onclick = function (ev) {
+    document.getElementById("projectsList").className = "hidden";
+    document.getElementById("dashboard").className = "main_content";
+
+};
