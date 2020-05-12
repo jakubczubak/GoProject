@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/status")
+@RequestMapping("/app/status")
 public class StatusController {
 
     private StatusRepository statusRepository;

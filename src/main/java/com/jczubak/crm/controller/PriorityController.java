@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/priority")
+@RequestMapping("/app/priority")
 public class PriorityController {
 
     private PriorityRepository priorityRepository;

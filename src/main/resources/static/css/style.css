@@ -38,11 +38,22 @@ body{
     grid-gap: 10px;
 }
 
+.loginContainer{
+    position: relative;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(400px,1fr));
+    grid-template-rows: minmax(250px,auto);
+    margin: 40px 40px 40px 40px;
+    grid-auto-flow: dense;
+    grid-gap: 10px;
+}
+
 .projects{
     position: relative;
     max-width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(auto,1fr));
     grid-template-rows: minmax(auto,auto);
     margin: 40px 40px 40px 40px;
     grid-auto-flow: dense;
@@ -59,6 +70,7 @@ body{
     text-align: center;
     color: #fff;
     transition: 0.5s;
+
 }
 
 .projects .box:hover{
@@ -74,6 +86,20 @@ body{
     text-align: center;
     color: #fff;
     transition: 0.5s;
+
+
+}
+
+.loginContainer .box{
+    background: #333;
+    padding: 20px;
+    display: grid;
+    font-size: 20px;
+    place-items: center;
+    text-align: center;
+    color: #fff;
+    transition: 0.5s;
+    border-radius: 15px;
 }
 
 .container .error{
@@ -124,6 +150,13 @@ body{
     margin-bottom: 10px;
 }
 
+.container .userData img{
+    position: relative;
+    max-width: 1000px;
+    size: 30px;
+    margin-bottom: 10px;
+}
+
 
 
 .main_content .container .box:nth-child(2){
@@ -132,12 +165,17 @@ body{
 }
 .main_content .container .box:nth-child(3){
     grid-column: span 1;
+    grid-row: span 1;
+}
+
+.main_content .container .box:nth-child(4){
+    grid-column: span 1;
     grid-row: span 2;
 }
 
 .main_content .container .box:nth-child(5){
     grid-column: span 1;
-    grid-row: span 2;
+    grid-row: span 1;
 }
 .main_content .container .box:nth-child(6){
     grid-column: span 1;
@@ -215,11 +253,13 @@ body{
     font-size: 35px;
     color: #fff;
     margin-bottom: 60px;
-    text-transform: uppercase;
     letter-spacing: 4px;
     font-weight: 400;
 }
 
+.appName{
+    margin-top: 15px;
+}
 .name {
     background: none;
     border: none;
@@ -249,10 +289,11 @@ body{
     border: 1px solid #70a1ff;
     padding: 12px 40px;
     border-radius: 8px;
-    text-transform: uppercase;
     font-size: 25px;
     transition: 0.4s linear;
     margin-top: 40px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
 }
 .inner-width button:hover{
     background: #70a1ff;

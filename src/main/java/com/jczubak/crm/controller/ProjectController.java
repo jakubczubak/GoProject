@@ -13,7 +13,7 @@ import java.util.List;
 
 @Data
 @RestController
-@RequestMapping("/projects")
+@RequestMapping("/app/projects")
 public class ProjectController {
 
     private ProjectRepository projectRepository;

@@ -620,6 +620,24 @@ usersButton.onclick = function (ev) {
     document.getElementById("dashboard").className = "main_content";
 };
 
+//LOGOUT  SECTION
+
+ var logoutButton = document.getElementById("logout");
+
+ logoutButton.onclick = function (ev) {
+
+     if(confirm("Are you sure?")){
+         location.href = "/logout"
+     }
+ };
+
+//LOGOUT  SECTION
+
+ var signOutButton = document.getElementById("signUpButton");
+
+ signOutButton.onclick = function (ev) {
+     location.href = "/register"
+ };
 //PROJECTS  SECTION
 
 var projects = document.getElementById("projects");
