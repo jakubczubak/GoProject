@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>GoProject</title>
@@ -26,6 +26,9 @@
             <div  class="content">
                 <img src="signs.png">
                 <p>Logout</p>
+                <form id="logoutForm" name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="Sign Out"/>
+                </form>
             </div>
         </div>
         <div id="newProject" class="box">

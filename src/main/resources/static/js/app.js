@@ -627,7 +627,8 @@ usersButton.onclick = function (ev) {
  logoutButton.onclick = function (ev) {
 
      if(confirm("Are you sure?")){
-         location.href = "/logout"
+         var logoutForm = document.getElementById("logoutForm");
+         logoutForm.submit();
      }
  };
 
