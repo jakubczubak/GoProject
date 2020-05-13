@@ -1,7 +1,11 @@
 package com.jczubak.crm.service;
 
+import com.jczubak.crm.entity.User;
 import org.springframework.stereotype.Service;
 
-@Service
-public class UserService {
+
+public interface UserService {
+    User findByLogin(String login);
+
+    void saveUser(User user);
 }

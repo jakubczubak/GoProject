@@ -12,7 +12,6 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private LocalDateTime createdOn;
     private String subject;
     @OneToOne
@@ -24,7 +23,6 @@ public class Task {
     private Priority priority;
     @OneToMany
     private Set<User> users;
-
     @PrePersist
     public void prePersist() {
         createdOn = LocalDateTime.now();
