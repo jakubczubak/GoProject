@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>GoProject</title>
@@ -9,8 +11,8 @@
 <body>
 <!--Login section-->
 <div id="userMenu" class="selectionMenuContent">
-    <div class="selectionMenuContainer">
-        <div class="box">
+    <div sec:authorize="hasRole('ROLE_USER')" class="selectionMenuContainer">
+        <div class="box userBox">
             <div class="content">
                 <div class="inner-width">
                     <img src="avatar.png">
@@ -27,8 +29,26 @@
             </div>
         </div>
     </div>
+    <div sec:authorize="hasRole('ROLE_ADMIN')" class="selectionMenuContainer">
+        <div class="box">
+            <div class="content">
+                <div class="inner-width">
+                    <img src="avatar.png">
+                    <h1 class="appName">For user</h1>
+                </div>
+            </div>
+        </div>
+        <div id=adminBox class="box">
+            <div class="content">
+                <div class="inner-width">
+                    <img src="admin.png">
+                    <h1 class="appName">For admin</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-<script src="js/app.js"></script>
+<script src="js/selectionMenu.js"></script>
 </body>
 </html>

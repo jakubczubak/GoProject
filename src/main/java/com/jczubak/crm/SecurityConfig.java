@@ -18,8 +18,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/app/**").authenticated()
-                .antMatchers("/menu").authenticated()
-                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/").authenticated()
                 .and().formLogin()
                 .loginPage("/login")
                 .passwordParameter("password")

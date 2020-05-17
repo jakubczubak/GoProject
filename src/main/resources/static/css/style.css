@@ -170,6 +170,10 @@ body{
     background: #3864f2;
 }
 
+.selectionMenuContainer .userBox:hover{
+    background: #3864f2;
+}
+
 .selectionMenuContainer .box:hover{
     background: #3864f2;
 }

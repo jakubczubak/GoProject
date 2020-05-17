@@ -12,6 +12,6 @@ public class AdminController {
     @GetMapping("/admin")
     public String getAdminPage(Model model, @AuthenticationPrincipal CurrentUser currentUser){
         model.addAttribute("userName", "Hi, " + currentUser.getUser().getLogin() + "!");
-        return "dashboard";
+        return "adminDashboard";
     }
 }

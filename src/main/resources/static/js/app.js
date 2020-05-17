@@ -632,13 +632,6 @@ usersButton.onclick = function (ev) {
      }
  };
 
-//LOGOUT  SECTION
-
- var signOutButton = document.getElementById("signUpButton");
-
- signOutButton.onclick = function (ev) {
-     location.href = "/register"
- };
 //PROJECTS  SECTION
 
 var projects = document.getElementById("projects");
@@ -654,3 +647,4 @@ projectsButton.onclick = function (ev) {
     document.getElementById("dashboard").className = "main_content";
 
 };
+
