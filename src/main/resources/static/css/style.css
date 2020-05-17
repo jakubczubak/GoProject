@@ -160,6 +160,13 @@ body{
     text-align: center;
     color: #fff;
     transition: 0.5s;
+
+
+}
+
+.userDataText {
+    font-size: 25px;
+    letter-spacing: 2px;
 }
 
 .main_content .container .box:hover{
