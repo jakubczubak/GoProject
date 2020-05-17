@@ -2,8 +2,10 @@ package com.jczubak.crm.entity;
 
 import lombok.Data;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity

@@ -24,7 +24,13 @@ body{
     align-self: center;
     min-height: 100vh;
     background: #222;
+}
 
+.selectionMenuContent{
+    display: grid;
+    justify-content: center;
+    background: #222;
+    margin-top: 150px;
 }
 
 .container{
@@ -44,6 +50,17 @@ body{
     display: grid;
     grid-template-columns: repeat(1, minmax(400px,1fr));
     grid-template-rows: minmax(250px,auto);
+    margin: 40px 40px 40px 40px;
+    grid-auto-flow: dense;
+    grid-gap: 10px;
+}
+
+.selectionMenuContainer{
+    position: relative;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(400px,1fr));
+    grid-template-rows: minmax(250px,400px);
     margin: 40px 40px 40px 40px;
     grid-auto-flow: dense;
     grid-gap: 10px;
@@ -86,7 +103,17 @@ body{
     text-align: center;
     color: #fff;
     transition: 0.5s;
+}
 
+.selectionMenuContainer .box{
+    background: #333;
+    padding: 20px;
+    display: grid;
+    font-size: 15px;
+    place-items: center;
+    text-align: center;
+    color: #fff;
+    transition: 0.5s;
 
 }
 
@@ -140,6 +167,10 @@ body{
 }
 
 .main_content .container .userData:hover{
+    background: #3864f2;
+}
+
+.selectionMenuContainer .box:hover{
     background: #3864f2;
 }
 
@@ -254,6 +285,14 @@ body{
     color: #fff;
     margin-bottom: 60px;
     letter-spacing: 4px;
+    font-weight: 400;
+}
+
+.selectionMenuContainer .inner-width h1{
+    font-size: 25px;
+    color: #fff;
+    margin-bottom: 60px;
+    letter-spacing: 3px;
     font-weight: 400;
 }
 

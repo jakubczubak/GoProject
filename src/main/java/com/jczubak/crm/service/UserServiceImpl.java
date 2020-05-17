@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService{
 
     public void createDefaultUserAccount() {
         User defaultUser = new User();
-        defaultUser.setLogin("user");
+        defaultUser.setLogin("Kuba");
         defaultUser.setName("user");
         defaultUser.setSurname("user");
         defaultUser.setPassword("user");
