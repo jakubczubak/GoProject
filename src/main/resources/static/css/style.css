@@ -388,3 +388,10 @@ td img {
     letter-spacing: 2px;
     margin-bottom: 40px;
 }
+
+.loginError{
+    font-size: 25px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    color: #ffd372;
+}
