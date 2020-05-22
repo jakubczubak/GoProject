@@ -1,11 +1,8 @@
 package com.jczubak.crm.controller;
 
-import com.jczubak.crm.entity.Status;
 import com.jczubak.crm.entity.User;
-import com.jczubak.crm.repository.StatusRepository;
-import com.jczubak.crm.repository.UserRepository;
+import com.jczubak.crm.service.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 
@@ -13,26 +10,26 @@ import java.util.List;
 @RequestMapping("/app/users")
 public class UserController {
 
-    private UserRepository userRepository;
+    private UserServiceImpl userServiceImpl;
 
-    public UserController(UserRepository userRepository){
-        this.userRepository=userRepository;
+    public UserController(UserServiceImpl userServiceImpls){
+        this.userServiceImpl=userServiceImpls;
     }
 
-    @RequestMapping(value = "/add", produces = "application/json")
+    @PostMapping(value = "/add", produces = "application/json")
     public String addStatus(@RequestBody User user){
-       userRepository.save(user);
+       userServiceImpl.saveUser(user);
         return "success";
     }
 
     @GetMapping("/list")
     public List<User> getUserList(){
-        return userRepository.findAll();
+        return userServiceImpl.getUserList();
     }
 
     @DeleteMapping("/delete/{id}")
     public String deleteUsersByID(@PathVariable Long id){
-        userRepository.deleteById(id);
+        userServiceImpl.deleteUserByID(id);
         return "success";
     }
 

@@ -5,11 +5,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AdminController {
+@RequestMapping("/admin")
+public class AdminDashboardController {
 
-    @GetMapping("/admin")
+    @GetMapping("")
     public String getAdminPage(Model model, @AuthenticationPrincipal CurrentUser currentUser){
         model.addAttribute("userName", "Hi, " + currentUser.getUser().getLogin() + "!");
         return "adminDashboard";

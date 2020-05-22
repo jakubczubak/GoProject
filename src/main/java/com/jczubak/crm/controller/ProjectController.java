@@ -1,37 +1,29 @@
 package com.jczubak.crm.controller;
 
 import com.jczubak.crm.entity.Project;
-import com.jczubak.crm.repository.ProjectRepository;
-import lombok.Data;
-import lombok.Lombok;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import com.jczubak.crm.service.ProjectService;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@Data
+
 @RestController
 @RequestMapping("/app/projects")
 public class ProjectController {
 
-    private ProjectRepository projectRepository;
+    private final ProjectService projectService;
 
-    public ProjectController(ProjectRepository projectRepository){
-        this.projectRepository=projectRepository;
+    public ProjectController(ProjectService projectService){
+        this.projectService=projectService;
     }
 
-    @RequestMapping(value = "/add", produces = "application/json")
+    @PostMapping(value = "/add", produces = "application/json")
     public String addProject(@RequestBody Project project){
-        project.setIdentifier();
-        projectRepository.save(project);
-        return "success";
+        return projectService.saveProject(project);
     }
 
-    @GetMapping("/lsit")
+    @GetMapping("/list")
         public List<Project> getProjectsList(){
-            return projectRepository.findAll();
+            return projectService.getProjectsList();
         }
     }
 

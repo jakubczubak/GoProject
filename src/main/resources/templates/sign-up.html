@@ -15,19 +15,16 @@
         <div class="box">
             <div class="content">
                 <div class="inner-width">
-                    <img src="login.png">
+                    <img src="file.png">
                     <h1 class="appName">GoProject</h1>
-                    <p th:if="${param.error}" class="loginError">Wrong user or password!</p>
-                    <p th:if="${param.logout}" class="logoutAlert">You have been signed out!</p>
-                    <form action="/login" method="post">
-                        <input type="text" name="login" class="name" placeholder="Login">
+                    <p class="registerParagraph" >Create new account</p>
+                    <p class="registerParagraph" >It's fast and easy.</p>
+                    <form th:action="@{/register}" method="post">
+                        <input type="text" name="name" class="name" placeholder="Name">
+                        <input type="text" name="surname" class="name" placeholder="Surname">
+                        <input type="text" name="login" class="name" placeholder="Email">
                         <input type="password" name="password" class="name" placeholder="Password"><br>
-                        <input
-                                type="hidden"
-                                th:name="${_csrf.parameterName}"
-                                th:value="${_csrf.token}" />
-                        <button type="submit">Log in</button>
-                        <button id="signUpButton">Sign Up</button>
+                        <button type="submit">Sign up</button>
                     </form>
                 </div>
             </div>

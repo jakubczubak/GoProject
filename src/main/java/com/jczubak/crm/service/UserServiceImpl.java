@@ -5,11 +5,14 @@ import com.jczubak.crm.entity.User;
 import com.jczubak.crm.repository.RoleRepository;
 import com.jczubak.crm.repository.UserRepository;
 import lombok.Data;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -37,7 +40,7 @@ public class UserServiceImpl implements UserService{
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
-
+    @EventListener(ApplicationReadyEvent.class)
     public void createDefaultUserAccount() {
         User defaultUser = new User();
         defaultUser.setLogin("Kuba");
@@ -45,5 +48,13 @@ public class UserServiceImpl implements UserService{
         defaultUser.setSurname("user");
         defaultUser.setPassword("user");
         saveUser(defaultUser);
+    }
+
+    public List<User> getUserList(){
+        return userRepository.findAll();
+    }
+
+    public void deleteUserByID(Long id){
+        userRepository.deleteById(id);
     }
 }

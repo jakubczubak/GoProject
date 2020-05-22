@@ -406,3 +406,18 @@ td img {
     letter-spacing: 1px;
     color: #ffd372;
 }
+
+
+.logoutAlert{
+    font-size: 25px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    color: #96ff8e;
+}
+
+.registerParagraph{
+    color: #4b9dff;
+    margin-bottom: 10px;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
