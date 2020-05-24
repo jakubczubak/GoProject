@@ -19,7 +19,7 @@
                     <h1 class="appName">GoProject</h1>
                     <p th:if="${param.error}" class="loginError">Wrong user or password!</p>
                     <p th:if="${param.logout}" class="logoutAlert">You have been signed out!</p>
-                    <p th:if="${param.active}" class="logoutAlert">Your account is active.</p>
+                    <p th:if="${param.active}" class="ActiveAccountAlert">Your account is active.</p>
                     <form action="/login" method="post">
                         <input type="text" name="login" class="name" placeholder="Login">
                         <input type="password" name="password" class="name" placeholder="Password"><br>

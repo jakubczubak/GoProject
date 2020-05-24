@@ -1,7 +1,7 @@
 package com.jczubak.crm.controller;
 
 import com.jczubak.crm.entity.Priority;
-import com.jczubak.crm.repository.PriorityRepository;
+import com.jczubak.crm.service.PriorityService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,27 +11,27 @@ import java.util.List;
 @RequestMapping("/app/priority")
 public class PriorityController {
 
-    private PriorityRepository priorityRepository;
+    private final PriorityService priorityService;
 
-    public PriorityController(PriorityRepository priorityRepository){
-        this.priorityRepository=priorityRepository;
+    public PriorityController(PriorityService priorityService){
+        this.priorityService=priorityService;
     }
 
 
     @RequestMapping(value = "/add", produces = "application/json")
     public String addPriority(@RequestBody Priority priority){
-        priorityRepository.save(priority);
+        priorityService.addPriority(priority);
         return "success";
     }
 
     @GetMapping("/list")
     public List<Priority> getPriorityList(){
-        return priorityRepository.findAll();
+        return priorityService.getPriorityList();
     }
 
     @DeleteMapping("/delete/{id}")
     public String deletePriorityByID(@PathVariable Long id){
-        priorityRepository.deleteById(id);
+        priorityService.deletePriorityByID(id);
         return "success";
     }
 

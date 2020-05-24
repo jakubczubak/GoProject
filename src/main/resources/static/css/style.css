@@ -165,8 +165,8 @@ body{
 }
 
 .userDataText {
-    font-size: 25px;
-    letter-spacing: 2px;
+    font-size: 22px;
+    letter-spacing: 1px;
 }
 
 .main_content .container .box:hover{
@@ -404,7 +404,7 @@ td img {
     font-size: 25px;
     margin-bottom: 15px;
     letter-spacing: 1px;
-    color: #ffd372;
+    color: #ffffff;
 }
 
 
@@ -412,7 +412,19 @@ td img {
     font-size: 25px;
     margin-bottom: 15px;
     letter-spacing: 1px;
-    color: #96ff8e;
+    color: #ffffff;
+}
+
+.ActiveAccountAlert{
+    font-size: 25px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+.statusAlert{
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #ffffff;
 }
 
 .registerParagraph{
