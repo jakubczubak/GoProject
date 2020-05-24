@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setEnabled(1);
+        user.setEnabled(false);
         Role userRole = roleRepository.findByName("ROLE_ADMIN");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
@@ -56,5 +56,9 @@ public class UserServiceImpl implements UserService{
 
     public void deleteUserByID(Long id){
         userRepository.deleteById(id);
+    }
+
+    public void updateUser(User user){
+        userRepository.save(user);
     }
 }

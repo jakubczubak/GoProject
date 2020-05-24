@@ -1,6 +1,7 @@
 package com.jczubak.crm.controller;
 
 import com.jczubak.crm.entity.User;
+import com.jczubak.crm.service.TokenService;
 import com.jczubak.crm.service.UserService;
 import com.jczubak.crm.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class RegisterController {
 
     private final UserServiceImpl userServiceImpl;
+    private final TokenService tokenService;
 
-    public RegisterController(UserServiceImpl userServiceImpl){
+    public RegisterController(UserServiceImpl userServiceImpl, TokenService tokenService){
         this.userServiceImpl=userServiceImpl;
+        this.tokenService=tokenService;
     }
 
     @GetMapping("/sign-up")
@@ -26,6 +29,7 @@ public class RegisterController {
     @PostMapping("/register")
     public String register(User user){
     userServiceImpl.saveUser(user);
-        return "sign-up";
+    tokenService.sendToken(user);
+        return "redirect:/sign-up?status";
     }
 }

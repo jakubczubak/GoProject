@@ -9,8 +9,8 @@ public class CurrentUser extends org.springframework.security.core.userdetails.U
 
     private final User user;
 
-    public CurrentUser(String login, String password, Collection<?extends GrantedAuthority> authorities, User user){
-        super(login,password,authorities);
+    public CurrentUser(String login, String password, Collection<?extends GrantedAuthority> authorities, User user, Boolean isEnabled){
+        super(login,password,isEnabled,true,true,true,authorities);
         this.user=user;
     }
 

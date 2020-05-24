@@ -1,6 +1,8 @@
 package com.jczubak.crm.controller;
 
+import com.jczubak.crm.entity.Token;
 import com.jczubak.crm.entity.User;
+import com.jczubak.crm.service.TokenService;
 import com.jczubak.crm.service.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -11,9 +13,11 @@ import java.util.List;
 public class UserController {
 
     private UserServiceImpl userServiceImpl;
+    private TokenService tokenService;
 
-    public UserController(UserServiceImpl userServiceImpls){
+    public UserController(UserServiceImpl userServiceImpls, TokenService tokenService){
         this.userServiceImpl=userServiceImpls;
+        this.tokenService=tokenService;
     }
 
     @PostMapping(value = "/add", produces = "application/json")
@@ -32,5 +36,7 @@ public class UserController {
         userServiceImpl.deleteUserByID(id);
         return "success";
     }
+
+
 
 }
