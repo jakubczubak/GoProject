@@ -1,7 +1,5 @@
 package com.jczubak.crm.controller;
 
-import com.jczubak.crm.entity.Token;
-import com.jczubak.crm.entity.User;
 import com.jczubak.crm.service.TokenService;
 import com.jczubak.crm.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
