@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService{
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
+
     @EventListener(ApplicationReadyEvent.class)
     public void createDefaultUserAccount() {
         User defaultUser = new User();
@@ -47,7 +48,11 @@ public class UserServiceImpl implements UserService{
         defaultUser.setName("user");
         defaultUser.setSurname("user");
         defaultUser.setPassword("user");
-        saveUser(defaultUser);
+        defaultUser.setPassword(bCryptPasswordEncoder.encode(defaultUser.getPassword()));
+        Role userRole = roleRepository.findByName("ROLE_ADMIN");
+        defaultUser.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        defaultUser.setEnabled(true);
+        userRepository.save(defaultUser);
     }
 
     public List<User> getUserList(){

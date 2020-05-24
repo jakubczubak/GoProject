@@ -21,10 +21,7 @@ public class TokenController {
 
     @GetMapping("/token")
     public String confirmAccount(@RequestParam String value){
-        Token byValue  = tokenService.findTokenByValue(value);
-        User user = byValue.getUser();
-        user.setEnabled(true);
-        userServiceImpl.updateUser(user);
+        tokenService.confirmAccount(value);
         return "redirect:/login?active";
     }
 }
