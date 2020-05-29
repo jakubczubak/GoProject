@@ -126,7 +126,6 @@ body{
     text-align: center;
     color: #fff;
     transition: 0.5s;
-    border-radius: 15px;
 }
 
 .container .error{
@@ -423,7 +422,7 @@ td img {
 }
 .statusAlert{
     font-size: 22px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     color: #ffffff;
 }
 
@@ -438,3 +437,11 @@ td img {
     margin-top: 20px;
 }
 
+.forgetPassword{
+    margin-bottom: 40px;
+}
+
+.test{
+    color: #70a1ff;
+    text-decoration: none;
+}
