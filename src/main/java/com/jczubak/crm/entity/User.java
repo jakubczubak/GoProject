@@ -71,4 +71,7 @@ public class User {
         this.surname = surname;
     }
 
+    public String getName() {
+        return name;
+    }
 }

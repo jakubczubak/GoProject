@@ -13,7 +13,7 @@ public class AdminDashboardController {
 
     @GetMapping("")
     public String getAdminPage(Model model, @AuthenticationPrincipal CurrentUser currentUser){
-        model.addAttribute("userName", "Hi, " + currentUser.getUser().getLogin() + "!");
+        model.addAttribute("userName", "Hi, " + currentUser.getUser().getName() + "!");
         return "adminDashboard";
     }
 }
