@@ -31,7 +31,7 @@ public class TokenService {
         String url = "http://localhost:8080/token?value=" + tokenValue;
 
         try {
-            mailService.sendMail(user.getLogin(),"Confirm account", url, false);
+            mailService.sendMail(user.getEmail(),"Confirm account", url, false);
         } catch (MessagingException e) {
             e.printStackTrace();
         }

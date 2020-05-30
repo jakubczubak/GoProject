@@ -28,8 +28,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findByLogin(String login) {
-        return userRepository.findByLogin(login);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService{
     @EventListener(ApplicationReadyEvent.class)
     public void createDefaultUserAccount() {
         User defaultUser = new User();
-        defaultUser.setLogin("Kuba");
+        defaultUser.setEmail("admin@gmail.com");
         defaultUser.setName("user");
         defaultUser.setSurname("user");
         defaultUser.setPassword("user");

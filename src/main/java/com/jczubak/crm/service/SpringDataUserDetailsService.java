@@ -22,14 +22,14 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userService.findByLogin(login);
-        if(user == null) {throw new UsernameNotFoundException(login);}
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userService.findByEmail(email);
+        if(user == null) {throw new UsernameNotFoundException(email);}
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for(Role role : user.getRoles()){
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
 
         }
-        return new CurrentUser(user.getLogin(), user.getPassword(),grantedAuthorities, user,user.getEnabled());
+        return new CurrentUser(user.getEmail(), user.getPassword(),grantedAuthorities, user,user.getEnabled());
     }
 }
