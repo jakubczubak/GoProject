@@ -48,7 +48,7 @@ public class TokenService {
             user.setEnabled(true);
             userServiceImpl.updateUser(user);
         }else {
-            new RuntimeException("Niepoprawny token");
+            new RuntimeException("Incorrect token");
         }
     }
 }
