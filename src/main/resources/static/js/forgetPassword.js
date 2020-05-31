@@ -15,8 +15,8 @@ forgetPasswordButton.onclick = function (ev) {
             contentType: "application/json",
             headers: {"X-CSRF-TOKEN": token},
             method: "POST"
-        }).done(function () {
-            forgetPasswordMessage.innerText="Check your mailbox!"
+        }).done(function (data) {
+            forgetPasswordMessage.innerText=data.message;
         });
     }else{
         forgetPasswordMessage.innerText="Incorrect email!"

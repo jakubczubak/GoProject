@@ -1,6 +1,7 @@
 package com.jczubak.crm.controller;
 
 import com.jczubak.crm.entity.User;
+import com.jczubak.crm.model.GenericResponse;
 import com.jczubak.crm.model.UserEmail;
 import com.jczubak.crm.repository.UserRepository;
 import com.jczubak.crm.service.PasswordResetTokenService;
@@ -26,18 +27,15 @@ public class PasswordResetTokenController {
         return "forgetPassword";
     }
 
-  @PostMapping("/forgetPassword")
-  public void processForgetPassword(@RequestBody UserEmail userEmail) {
-
+    @PostMapping("/forgetPassword")
+    @ResponseBody
+    public GenericResponse processForgetPassword(@RequestBody UserEmail userEmail) {
     Optional<User> user = Optional.ofNullable(userService.findByEmail(userEmail.getEmail()));
-
     if(user.isPresent()){
-
         passwordResetTokenService.sendToken(user.get());
-
+        return new GenericResponse("Check your mailbox!");
     }else {
-      System.out.println("mail nie istnieje");
+      return new GenericResponse("Email does not exist in the database!");
     }
-
     }
 }

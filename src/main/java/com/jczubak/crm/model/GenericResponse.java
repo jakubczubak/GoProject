@@ -1,5 +1,8 @@
 package com.jczubak.crm.model;
 
+import lombok.Data;
+
+@Data
 public class GenericResponse {
     private String message;
     private String error;
