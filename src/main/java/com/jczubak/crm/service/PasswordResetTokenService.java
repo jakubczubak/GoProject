@@ -1,12 +1,12 @@
 package com.jczubak.crm.service;
 
 import com.jczubak.crm.entity.PasswordResetToken;
-import com.jczubak.crm.entity.Token;
 import com.jczubak.crm.entity.User;
 import com.jczubak.crm.repository.PasswordResetTokenRepository;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -28,12 +28,21 @@ public class PasswordResetTokenService {
         passwordResetToken.setToken(tokenValue);
         passwordResetTokenRepository.save(passwordResetToken);
 
-        String url = "http://localhost:8080/passwordresettoken?value=" + tokenValue;
+        String url = "http://localhost:8080/changePassword?tokenValue=" + tokenValue;
 
         try {
             mailService.sendMail(user.getEmail(),"Reset password", url, false);
         } catch (MessagingException e) {
             e.printStackTrace();
+        }
+    }
+
+    public boolean validatePasswordResetToken(String tokenValue){
+        Optional<PasswordResetToken> passwordResetToken = passwordResetTokenRepository.findByToken(tokenValue);
+        if(passwordResetToken.isPresent()){
+            return true;
+        }else{
+            return false;
         }
     }
 }

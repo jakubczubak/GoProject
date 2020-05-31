@@ -20,6 +20,7 @@
                     <p th:if="${param.error}" class="loginError">Wrong user or password!</p>
                     <p th:if="${param.logout}" class="logoutAlert">You have been signed out!</p>
                     <p th:if="${param.active}" class="ActiveAccountAlert">Your account is active.</p>
+                    <p th:if="${param.invalidToken}" class="ActiveAccountAlert">Your token is invalid. Check again your token link.</p>
 
                     <form action="/login" method="post">
                         <input type="text" name="email" class="name" placeholder="Login">
