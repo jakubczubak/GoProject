@@ -3,6 +3,7 @@ package com.jczubak.crm.service;
 import com.jczubak.crm.entity.Token;
 import com.jczubak.crm.entity.User;
 import com.jczubak.crm.repository.TokenRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import java.util.Optional;
@@ -14,6 +15,8 @@ public class TokenService {
     public final TokenRepository tokenRepository;
     public final MailService mailService;
     private final UserServiceImpl userServiceImpl;
+    @Value("${hostName}")
+    private String hostName;
 
     public TokenService(TokenRepository tokenRepository, MailService mailService, UserServiceImpl userServiceImpl){
         this.tokenRepository=tokenRepository;
@@ -28,7 +31,7 @@ public class TokenService {
         token.setValue(tokenValue);
         tokenRepository.save(token);
 
-        String url = "http://localhost:8080/token?value=" + tokenValue;
+        String url = hostName + "/token?value=" + tokenValue;
 
         try {
             mailService.sendMail(user.getEmail(),"Confirm account", url, false);

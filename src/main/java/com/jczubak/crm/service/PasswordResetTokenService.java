@@ -3,6 +3,7 @@ package com.jczubak.crm.service;
 import com.jczubak.crm.entity.PasswordResetToken;
 import com.jczubak.crm.entity.User;
 import com.jczubak.crm.repository.PasswordResetTokenRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -14,6 +15,8 @@ public class PasswordResetTokenService {
 
     public final PasswordResetTokenRepository passwordResetTokenRepository;
     public final MailService mailService;
+    @Value("${hostName")
+    private String hostName;
 
     public PasswordResetTokenService(PasswordResetTokenRepository passwordResetTokenRepository, MailService mailService){
         this.passwordResetTokenRepository=passwordResetTokenRepository;
@@ -28,7 +31,7 @@ public class PasswordResetTokenService {
         passwordResetToken.setToken(tokenValue);
         passwordResetTokenRepository.save(passwordResetToken);
 
-        String url = "http://localhost:8080/changePassword?tokenValue=" + tokenValue;
+        String url = hostName + "/changePassword?tokenValue=" + tokenValue;
 
         try {
             mailService.sendMail(user.getEmail(),"Reset password", url, false);
