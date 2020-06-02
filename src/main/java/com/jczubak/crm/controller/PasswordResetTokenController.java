@@ -55,9 +55,10 @@ public class PasswordResetTokenController {
     }
 
     @PostMapping("/savePassword")
-    public GenericResponse savePassword(PasswordDTO passwordDTO){
-    System.out.println(passwordDTO.getToken());
-        return new GenericResponse("chuj"); /// sprawdz to!!!!!!!!!
+    @ResponseBody
+    public String savePassword(@ModelAttribute("token") String token){
+    System.out.println(token);
+    return "chuj"; /// sprawdz to!!!!!!!!!
     }
 
 }
