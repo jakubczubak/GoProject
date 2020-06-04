@@ -7,22 +7,27 @@ import com.jczubak.crm.model.UserEmail;
 import com.jczubak.crm.repository.UserRepository;
 import com.jczubak.crm.service.PasswordResetTokenService;
 import com.jczubak.crm.service.UserService;
+import com.jczubak.crm.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Controller
+@SessionAttributes("token")
 public class PasswordResetTokenController {
 
     public final UserService userService;
+    public final UserServiceImpl userServiceImpl;
     public final PasswordResetTokenService passwordResetTokenService;
 
-    public PasswordResetTokenController(UserService userService, PasswordResetTokenService passwordResetTokenService){
+    public PasswordResetTokenController(UserService userService, PasswordResetTokenService passwordResetTokenService, UserServiceImpl userServiceImpl){
         this.userService=userService;
         this.passwordResetTokenService=passwordResetTokenService;
+        this.userServiceImpl=userServiceImpl;
     }
 
     @GetMapping("/forgetPassword")
@@ -56,9 +61,17 @@ public class PasswordResetTokenController {
 
     @PostMapping("/savePassword")
     @ResponseBody
-    public String savePassword(@ModelAttribute("token") String token){
-    System.out.println(token);
-    return "chuj"; /// sprawdz to!!!!!!!!!
+    public String savePassword(@ModelAttribute("token") String tokenValue, @RequestBody PasswordDTO passwordDTO){
+
+        boolean result = passwordResetTokenService.validatePasswordResetToken(tokenValue);
+        if(result){
+            User user = passwordResetTokenService.getUserByPasswordResetToken(tokenValue);
+            userServiceImpl.changeUserPassword(user,passwordDTO.getNewPassword());
+            return "redirect:/login";
+        }else{
+            return  "redirect:/niepoprawny token";
+
+        }
     }
 
 }

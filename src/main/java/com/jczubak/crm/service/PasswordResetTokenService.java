@@ -15,7 +15,7 @@ public class PasswordResetTokenService {
 
     public final PasswordResetTokenRepository passwordResetTokenRepository;
     public final MailService mailService;
-    @Value("${hostName")
+    @Value("${hostName}")
     private String hostName;
 
     public PasswordResetTokenService(PasswordResetTokenRepository passwordResetTokenRepository, MailService mailService){
@@ -48,4 +48,11 @@ public class PasswordResetTokenService {
             return false;
         }
     }
+
+    public User getUserByPasswordResetToken(String tokenValue){
+        Optional<PasswordResetToken> passwordResetToken = passwordResetTokenRepository.findByToken(tokenValue);
+        return passwordResetToken.get().getUser();
+    }
+
+
 }

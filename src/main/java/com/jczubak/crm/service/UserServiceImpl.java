@@ -55,6 +55,11 @@ public class UserServiceImpl implements UserService{
         userRepository.save(defaultUser);
     }
 
+    public void changeUserPassword(User user, String password){
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        userRepository.save(user);
+    }
+
     public List<User> getUserList(){
         return userRepository.findAll();
     }
