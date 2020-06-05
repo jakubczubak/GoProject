@@ -103,7 +103,7 @@
                 <configuration>
                     <appName>go-project-software</appName>
                     <processTypes>
-                        <web>java -XX:+UseSerialGC -XX:MaxRAM=512m -jar target/${project.build.finalName}.jar --server.port=$PORT</web>
+                        <web>java -XX:+UseSerialGC -XX:MaxRAM=512m -jar ${project.build.finalName}.jar --server.port=$PORT</web>
                     </processTypes>
                 </configuration>
             </plugin>
