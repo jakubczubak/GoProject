@@ -9,7 +9,7 @@ pipeline {
    stages {
         stage('Build') {
          steps {
-            powershell "mvn clean compile"
+            sh "mvn clean compile"
          }
         }
         stage('Test') {
