@@ -22,7 +22,7 @@ class CrmApplicationTests {
     @Test
     void contextLoads() {
     }
-
+    //Only for testing, delete it later!
     @Test
     void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get("/simpleTest"))

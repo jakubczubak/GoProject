@@ -14,6 +14,7 @@ public class CrmApplication {
         SpringApplication.run(CrmApplication.class, args);
     }
 
+    //Only for testing, delete it later!
 
     @GetMapping("/simpleTest")
     public String doSimpeTest(){
