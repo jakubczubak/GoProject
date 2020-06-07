@@ -30,11 +30,4 @@ public class Project {
     createdOn = LocalDateTime.now();
   }
 
-  public void setIdentifier(String identifier) {
-    this.identifier = identifier;
-  }
-
-  public String getName() {
-    return name;
-  }
 }

@@ -1,5 +1,6 @@
 package com.jczubak.crm.controller;
 
+import com.jczubak.crm.entity.Activity;
 import com.jczubak.crm.service.CurrentUser;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
