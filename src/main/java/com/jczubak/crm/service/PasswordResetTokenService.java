@@ -54,5 +54,11 @@ public class PasswordResetTokenService {
         return passwordResetToken.get().getUser();
     }
 
+    public void deleteTokenByTokenValue(String tokenValue){
+        Optional<PasswordResetToken> passwordResetToken = passwordResetTokenRepository.findByToken(tokenValue);
+        if(passwordResetToken.isPresent()){
+            passwordResetTokenRepository.delete(passwordResetToken.get());
+        }
+    }
 
 }

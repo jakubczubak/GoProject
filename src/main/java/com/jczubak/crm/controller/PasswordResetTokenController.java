@@ -67,11 +67,10 @@ public class PasswordResetTokenController {
         if(result){
             User user = passwordResetTokenService.getUserByPasswordResetToken(tokenValue);
             userServiceImpl.changeUserPassword(user,passwordDTO.getNewPassword());
-            return "redirect:/login";
+            passwordResetTokenService.deleteTokenByTokenValue(tokenValue);
+            return "/login?changePasswordSuccess";
         }else{
-            return  "redirect:/niepoprawny token";
-
+            return  "/login?changePasswordFalse";
         }
     }
-
 }
