@@ -1,3 +1,6 @@
+//CSRF TOKEN
+var token = $("meta[name='_csrf']").attr("content");
+
 //PRIORITY SECTION
 var newPriority = document.getElementById("newPriority");
 var backPriorityButton = document.getElementById("backPriorityButton");
@@ -42,14 +45,14 @@ prioritySendButton.onclick = function () {
     if (priorityName.value.length < 5) {
         checkPriorityName(5)
     } else {
-
-        var data = "{\"name\":" + "\"" + priorityName.value + "\"}";
-
         $.ajax({
-            url: '/priority/add',
-            data: data,
+            url: '/app/priority/add',
+            data: JSON.stringify({
+                "name":   priorityName.value
+            }),
             contentType: "application/json",
-            method: "PUT"
+            headers: {"X-CSRF-TOKEN": token},
+            method: "POST"
         });
 
 
@@ -111,14 +114,13 @@ statusSendButton.onclick = function () {
     if (statusName.value.length < 5) {
         checkStatusName(5)
     } else {
-
-        var data = "{\"name\":" + "\"" + statusName.value + "\"}";
-
         $.ajax({
             url: '/status/add',
-            data: data,
+            data: JSON.stringify({
+                "name":   statusName.value
+            }),
             contentType: "application/json",
-            method: "PUT"
+            method: "POST"
         });
 
 
@@ -210,19 +212,16 @@ userSendButton.onclick = function () {
     } else if (userPassword.value !== userRepassword.value) {
         passwordComparison();
     } else {
-
-        var data = JSON.stringify({
-            login: userLogin.value,
-            name: userName.value,
-            surname: userSurname.value,
-            password: userPassword.value
-        });
-
         $.ajax({
             url: '/users/add',
-            data: data,
+            data: JSON.stringify({
+                "login":   userLogin.value,
+                "name": userName.value,
+                "surname": userSurname.value,
+                "password": userPassword.value,
+            }),
             contentType: "application/json",
-            method: "PUT"
+            method: "POST"
         });
 
 
@@ -340,16 +339,13 @@ projectSendButton.onclick = function (ev) {
     } else if (projectDescription.value.length > 30) {
         checkDescriptionLength(projectDescription, 30);
     } else {
-
-        var data = JSON.stringify({
-            name: projectName.value,
-            description: projectDescription.value,
-            site: projectSite.value
-        });
-
         $.ajax({
             url: '/projects/add',
-            data: data,
+            data: JSON.stringify({
+                "name":   projectName.value,
+                "description": projectDescription.value,
+                "site": projectSite.value,
+            }),
             contentType: "application/json",
             method: "PUT"
         });
@@ -454,7 +450,7 @@ backStatusListButton.onclick = function (ev) {
 
 function createListOfPrioritiesTable() {
     $.ajax({
-        url: "/priority/list",
+        url: "/app/priority/list",
         data: {},
         type: "GET",
         dataType: "json"
@@ -480,8 +476,9 @@ function createListOfPrioritiesTable() {
                 var img0 = document.createElement("img");
                 img0.addEventListener("click", function (ev1) {
                     $.ajax({
-                        url: '/priority/delete/' + prioritiesListArray[0].id,
+                        url: '/app/priority/delete/' + prioritiesListArray[0].id,
                         type: 'DELETE',
+                        headers: {"X-CSRF-TOKEN": token},
                         success: function (result) {
 
                             createListOfPrioritiesTable();
