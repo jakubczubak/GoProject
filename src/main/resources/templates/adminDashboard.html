@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>GoProject</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="shortcut icon" href="seo-and-web.png">
+    <link rel="shortcut icon" href="cloud.png">
     <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
 
 
@@ -36,10 +36,10 @@
                 </form>
             </div>
         </div>
-        <div class="box">
+        <div id="userDashboard" class="box">
             <div class="content">
-                <img src="avatar.png">
-                <p>Go to dashboard</p>
+                <img src="leftArrow.png">
+                <p>Back</p>
             </div>
         </div>
         <div id="newProject" class="box">
@@ -103,7 +103,7 @@
             <div class="content">
               <div class="inner-width">
                   <img src="fire.png">
-                <h1>create a new priority</h1>
+                <h1>Create a new priority</h1>
                   <input id="priorityName" type="text" class="name" placeholder="Priority name"><br>
                   <button id="prioritySendButton">Create</button>
               </div>
@@ -132,7 +132,7 @@
             <div class="content">
                 <div class="inner-width">
                     <img src="project.png">
-                    <h1>create a new status</h1>
+                    <h1>Create a new status</h1>
                     <input id="statusName" type="text" class="name" placeholder="Status name"><br>
                     <button id="statusSendButton" >Create</button>
                 </div>
@@ -160,7 +160,7 @@
             <div class="content">
                 <div class="inner-width">
                     <img src="add.png">
-                    <h1>create a new user</h1>
+                    <h1>Create a new user</h1>
 
                     <input id="userLogin" type="text" name="Login" class="name" placeholder="Login">
                     <input id="userName" type="text" name="Name" class="name" placeholder="Name">
@@ -193,7 +193,7 @@
             <div class="content">
                 <div class="inner-width">
                     <img src="project-management.png">
-                    <h1>create a new project</h1>
+                    <h1>Create a new project</h1>
                     <input type="text" id="projectName" name="Project name" class="description" placeholder="Project name">
                     <input type="text" id="projectSite" name="Project site" class="description" placeholder="Site"><br>
                     <textarea id="projectDescription" name="Project description" class="description" placeholder="Description" rows="6" ></textarea><br>
@@ -476,6 +476,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-<script src="js/app.js"></script>
+<script src="js/adminDashboard.js"></script>
 </body>
 </html>

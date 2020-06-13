@@ -223,17 +223,13 @@ body{
     grid-row: span 1;
 }
 .nav{
-
     position: relative;
-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(1630px,1fr));
     grid-template-rows: minmax(40px,auto);
     margin-top: 40px;
     margin-bottom: 10px;
-
     grid-auto-flow: dense;
-
 }
 .login{
     background: #333;

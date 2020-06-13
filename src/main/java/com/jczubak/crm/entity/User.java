@@ -22,7 +22,7 @@ public class User {
     private String surname;
     private String password;
     private boolean isEnabled;
-    @ManyToMany(cascade	=	CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @ManyToMany(cascade	=	CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
     

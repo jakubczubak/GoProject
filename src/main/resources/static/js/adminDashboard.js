@@ -115,11 +115,12 @@ statusSendButton.onclick = function () {
         checkStatusName(5)
     } else {
         $.ajax({
-            url: '/status/add',
+            url: '/app/status/add',
             data: JSON.stringify({
                 "name":   statusName.value
             }),
             contentType: "application/json",
+            headers: {"X-CSRF-TOKEN": token},
             method: "POST"
         });
 
@@ -213,7 +214,7 @@ userSendButton.onclick = function () {
         passwordComparison();
     } else {
         $.ajax({
-            url: '/users/add',
+            url: '/app/users/add',
             data: JSON.stringify({
                 "login":   userLogin.value,
                 "name": userName.value,
@@ -221,6 +222,7 @@ userSendButton.onclick = function () {
                 "password": userPassword.value,
             }),
             contentType: "application/json",
+            headers: {"X-CSRF-TOKEN": token},
             method: "POST"
         });
 
@@ -340,14 +342,15 @@ projectSendButton.onclick = function (ev) {
         checkDescriptionLength(projectDescription, 30);
     } else {
         $.ajax({
-            url: '/projects/add',
+            url: '/app/projects/add',
             data: JSON.stringify({
                 "name":   projectName.value,
                 "description": projectDescription.value,
                 "site": projectSite.value,
             }),
             contentType: "application/json",
-            method: "PUT"
+            headers: {"X-CSRF-TOKEN": token},
+            method: "POST"
         });
 
 
@@ -371,7 +374,7 @@ var backStatusListButton = document.getElementById("backStatusListButton");
 
 function createStatusTable() {
     $.ajax({
-        url: "/status/list",
+        url: "/app/status/list",
         data: {},
         type: "GET",
         dataType: "json"
@@ -387,7 +390,6 @@ function createStatusTable() {
         for (var i = 0; i < statusListArray.length; i++) {
             var row = document.createElement("tr");
             for (var j = 0; j < 1; j++) {
-                console.log(statusListArray[0].id);
                 var cell0 = document.createElement("th");
                 var cell1 = document.createElement("td");
                 var cell2 = document.createElement("td");
@@ -397,8 +399,9 @@ function createStatusTable() {
                 var img0 = document.createElement("img");
                 img0.addEventListener("click", function (ev1) {
                     $.ajax({
-                        url: '/status/delete/' + statusListArray[0].id,
+                        url: 'app/status/delete/' + statusListArray[0].id,
                         type: 'DELETE',
+                        headers: {"X-CSRF-TOKEN": token},
                         success: function (result) {
                             createStatusTable();
 
@@ -536,7 +539,7 @@ var usersButton = document.getElementById("usersButton");
 
 function createUsersTable() {
     $.ajax({
-        url: "/users/list",
+        url: "/app/users/list",
         data: {},
         type: "GET",
         dataType: "json"
@@ -562,8 +565,9 @@ function createUsersTable() {
                 var img0 = document.createElement("img");
                 img0.addEventListener("click", function (ev1) {
                     $.ajax({
-                        url: '/users/delete/' + usersListArray[0].id,
+                        url: 'app/users/delete/' + usersListArray[0].id,
                         type: 'DELETE',
+                        headers: {"X-CSRF-TOKEN": token},
                         success: function (result) {
 
                             createUsersTable();
@@ -580,7 +584,7 @@ function createUsersTable() {
 
 
                 var cellText0 = document.createTextNode(i);
-                var cellText1 = document.createTextNode(usersListArray[i].login);
+                var cellText1 = document.createTextNode(usersListArray[i].email);
                 var cellText2 = document.createTextNode(usersListArray[i].name);
                 var cellText3 = document.createTextNode(usersListArray[i].surname);
 
@@ -644,3 +648,11 @@ projectsButton.onclick = function (ev) {
     document.getElementById("dashboard").className = "main_content";
 
 };
+
+// GO TO DASHBOARD SECTION
+
+var userDashboard = document.getElementById("userDashboard");
+
+userDashboard.onclick = function () {
+    location.href = "/app"
+}
