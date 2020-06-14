@@ -12,25 +12,7 @@
 <body>
 <!--Login section-->
 <div id="userMenu" class="selectionMenuContent">
-    <div sec:authorize="hasRole('ROLE_USER')" class="selectionMenuContainer">
-        <div class="box userBox">
-            <div class="content">
-                <div class="inner-width">
-                    <img src="avatar.png">
-                    <h1 class="appName">For user</h1>
-                </div>
-            </div>
-        </div>
-        <div class="box">
-            <div class="content">
-                <div class="inner-width">
-                    <img src="admin.png">
-                    <h1 class="appName">For admin</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div sec:authorize="hasRole('ROLE_ADMIN')" class="selectionMenuContainer">
+    <div class="selectionMenuContainer">
         <div id=userBox class="box">
             <div class="content">
                 <div class="inner-width">

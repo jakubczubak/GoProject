@@ -7,7 +7,12 @@ import com.jczubak.crm.repository.UserRepository;
 import lombok.Data;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -70,5 +75,46 @@ public class UserServiceImpl implements UserService{
 
     public void updateUser(User user){
         userRepository.save(user);
+    }
+
+    public void save_users_to_DB_who_logged_in_using_oAuth(String authorizedClientRegistrationId,OAuth2User principal){
+        if("google".equals(authorizedClientRegistrationId)){
+
+            String userName = (String) principal.getAttributes().get("name");
+            String userEmail = (String) principal.getAttributes().get("email");
+            String userLocale = (String) principal.getAttributes().get("locale");
+            String userSUB = (String) principal.getAttributes().get("sub");
+
+            System.out.println("Username: " + userName);
+            System.out.println("User email: " + userEmail);
+            System.out.println("User locale: " + userLocale);
+            System.out.println("User SUB: " + userSUB);
+            System.out.println("authorizedClientRegistrationId: " + authorizedClientRegistrationId);
+
+        }else if ("facebook".equals(authorizedClientRegistrationId)){
+
+            String userName = (String) principal.getAttributes().get("name");
+            String userEmail = (String) principal.getAttributes().get("email");
+            String userID = (String) principal.getAttributes().get("id");
+
+            System.out.println("Username: " +userName);
+            System.out.println("User email: " + userEmail);
+            System.out.println("User ID: " +userID);
+            System.out.println("authorizedClientRegistrationId: " + authorizedClientRegistrationId);
+
+        }else if ("github".equals(authorizedClientRegistrationId)){
+
+            String userName = (String) principal.getAttributes().get("name");
+            String userURL = (String) principal.getAttributes().get("url");
+            String userEmail = (String) principal.getAttributes().get("email");
+            Integer userID = (Integer) principal.getAttributes().get("id");
+
+
+            System.out.println("Username: " + userName);
+            System.out.println("User URL: " + userURL);
+            System.out.println("User email: " + userEmail);
+            System.out.println("User ID: " + userID);
+            System.out.println("authorizedClientRegistrationId: " + authorizedClientRegistrationId);
+        }
     }
 }
