@@ -24,7 +24,7 @@
                     <p th:if="${param.changePasswordSuccess}" class="ActiveAccountAlert">Password changed successfully.</p>
 
                     <form action="/login" method="post">
-                        <input type="text" name="email" class="name" placeholder="Login">
+                        <input type="text" name="email" class="name" placeholder="Login" autocomplete="off">
                         <input type="password" name="password" class="name" placeholder="Password"><br>
                         <input
                                 type="hidden"
@@ -35,8 +35,9 @@
                     <br>
                     <h4>Or</h4>
                     <br>
-                    <img src="facebook.png"><br><br>
-                    <img src="google.png">
+                    <img class="socialMedia" src="facebook.png">
+                    <img class="socialMedia" src="google.png">
+                    <img class="socialMedia" src="github.png">
                 </div>
             </div>
             <div >
