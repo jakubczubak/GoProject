@@ -32,7 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
                 .and()
                 .oauth2Login()
-                .loginPage("/login");
+                .loginPage("/login")
+                .defaultSuccessUrl("/app",true);
+
     }
 
     @Override

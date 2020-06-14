@@ -1,6 +1,7 @@
 package com.jczubak.crm.controller;
 
 import com.jczubak.crm.model.Oauth2AuthenticationUrls;
+import com.jczubak.crm.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ResolvableType;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
@@ -17,27 +18,16 @@ import java.util.*;
 public class LoginController {
 
 
-    private static String authorizationRequestBaseUri = "oauth2/authorization";
+    private final LoginService loginService;
 
-    private Set<Oauth2AuthenticationUrls> oauth2AuthenticationUrlsSet = new HashSet<>();
-
-    @Autowired
-    private ClientRegistrationRepository clientRegistrationRepository;
+    public LoginController(LoginService loginService){
+        this.loginService=loginService;
+    }
 
     @GetMapping("")
     public String getLoginPage(Model model){
 
-        Iterable<ClientRegistration> clientRegistrations = null;
-        ResolvableType type = ResolvableType.forInstance(clientRegistrationRepository)
-                .as(Iterable.class);
-        if (type != ResolvableType.NONE &&
-                ClientRegistration.class.isAssignableFrom(type.resolveGenerics()[0])) {
-            clientRegistrations = (Iterable<ClientRegistration>) clientRegistrationRepository;
-        }
-
-        clientRegistrations.forEach(registration ->
-                oauth2AuthenticationUrlsSet.add(new Oauth2AuthenticationUrls(authorizationRequestBaseUri + "/" + registration.getRegistrationId(),registration.getClientName()+".png")));
-        model.addAttribute("urls", oauth2AuthenticationUrlsSet);
+        model.addAttribute("urls", loginService.createOauth2AuthenticationUrlsSet());
 
         return "login";
     }
