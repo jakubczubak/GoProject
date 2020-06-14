@@ -35,9 +35,9 @@
                     <br>
                     <h4>Or</h4>
                     <br>
-                    <img class="socialMedia" src="facebook.png">
-                    <img class="socialMedia" src="google.png">
-                    <img class="socialMedia" src="github.png">
+                    <a th:each="url : ${urls}">
+                        <a th:href="${url.registrationId}"><img class="socialMedia" th:src="${url.iconName}"></a>
+                    </a>
                 </div>
             </div>
             <div >

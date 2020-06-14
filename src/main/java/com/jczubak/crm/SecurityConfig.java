@@ -20,7 +20,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/app/**").authenticated()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
-                .and().formLogin()
+                .and()
+                .formLogin()
                 .defaultSuccessUrl("/app")
                 .loginPage("/login")
                 .passwordParameter("password")
@@ -28,7 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout");
+                .logoutSuccessUrl("/login?logout")
+                .and()
+                .oauth2Login()
+                .loginPage("/login");
     }
 
     @Override
