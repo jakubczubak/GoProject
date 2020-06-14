@@ -20,8 +20,8 @@ public class RoleService {
         Role roleAdmin = new Role();
         Role roleUser = new Role();
 
-        roleAdmin.setName("ROLE_ADMIN");
-        roleUser.setName("ROLE_USER");
+        roleAdmin.setName("ADMIN");
+        roleUser.setName("USER");
 
         roleRepository.save(roleAdmin);
         roleRepository.save(roleUser);

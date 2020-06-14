@@ -33,7 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2Login()
                 .loginPage("/login")
-                .defaultSuccessUrl("/app",true);
+                .defaultSuccessUrl("/app",true)
+                .and()
+                .exceptionHandling().accessDeniedPage("/accessDenied");
 
     }
 

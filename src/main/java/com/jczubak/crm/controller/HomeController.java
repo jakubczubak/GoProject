@@ -1,4 +1,5 @@
 package com.jczubak.crm.controller;
+import com.jczubak.crm.service.CurrentUser;
 import com.jczubak.crm.service.UserServiceImpl;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,10 +19,13 @@ public class HomeController {
     }
 
     @GetMapping("/app")
-    public String getHomePage(@AuthenticationPrincipal OAuth2User principal){
+    public String getHomePage(@AuthenticationPrincipal OAuth2User principal,@AuthenticationPrincipal CurrentUser currentUser){
 
-        String authorizedClientRegistrationId = ((OAuth2AuthenticationToken)((SecurityContextImpl) SecurityContextHolder.getContext()).getAuthentication()).getAuthorizedClientRegistrationId();
-        userServiceImpl.save_users_to_DB_who_logged_in_using_oAuth(authorizedClientRegistrationId,principal);
+        if(currentUser==null){
+            String authorizedClientRegistrationId = ((OAuth2AuthenticationToken)((SecurityContextImpl) SecurityContextHolder.getContext()).getAuthentication()).getAuthorizedClientRegistrationId();
+            userServiceImpl.save_users_to_DB_who_logged_in_using_oAuth(authorizedClientRegistrationId,principal);
+        }
+
 
         return "selectionMenu";
     }
