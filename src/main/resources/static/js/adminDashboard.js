@@ -627,7 +627,7 @@ usersButton.onclick = function (ev) {
 
  logoutButton.onclick = function (ev) {
 
-     if(confirm("Are you sure?")){
+     if(window.confirm("Are you sure?")){
          var logoutForm = document.getElementById("logoutForm");
          logoutForm.submit();
      }
