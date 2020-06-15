@@ -18,7 +18,7 @@ function showMessage(value, user) {
 }
 
 function connect() {
-    client = Stomp.client('ws://go-project-software.herokuapp.com/chat'); //check this!
+    client = Stomp.client('wss://go-project-software.herokuapp.com/chat'); //check this!
     client.connect({}, function (frame) {
         client.subscribe("/topic/messages", function(message){
             showMessage(JSON.parse(message.body).message, JSON.parse(message.body).user)
