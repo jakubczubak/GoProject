@@ -36,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/app",true)
                 .and()
                 .exceptionHandling().accessDeniedPage("/accessDenied");
-
     }
 
     @Override
