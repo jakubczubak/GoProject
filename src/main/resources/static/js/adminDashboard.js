@@ -656,3 +656,9 @@ var userDashboard = document.getElementById("userDashboard");
 userDashboard.onclick = function () {
     location.href = "/app"
 }
+
+var chat = document.getElementById("chat");
+
+chat.onclick = function () {
+    location.href = "/go-pro-chat"
+}

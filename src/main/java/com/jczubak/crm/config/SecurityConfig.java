@@ -1,4 +1,4 @@
-package com.jczubak.crm;
+package com.jczubak.crm.config;
 
 import com.jczubak.crm.service.SpringDataUserDetailsService;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/app/**").authenticated()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/user/**").authenticated()
+                .antMatchers("/go-pro-chat/**").authenticated()
+                .antMatchers("/chat/**").authenticated()
+                .antMatchers("/topic/**").authenticated()
                 .and()
                 .formLogin()
                 .defaultSuccessUrl("/app")

@@ -4,14 +4,9 @@ import com.jczubak.crm.entity.Role;
 import com.jczubak.crm.entity.User;
 import com.jczubak.crm.repository.RoleRepository;
 import com.jczubak.crm.repository.UserRepository;
-import lombok.Data;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 

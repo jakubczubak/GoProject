@@ -17,3 +17,9 @@ logoutButton.onclick = function (ev) {
         logoutForm.submit();
     }
 };
+
+var chat = document.getElementById("chat");
+
+chat.onclick = function () {
+    location.href = "/go-pro-chat"
+}
