@@ -64,7 +64,7 @@ function getWebSocketURL() {
 //Heroku has a timeout limit (55s), so we use this function to not break the connection.
 setTimeout(function() {
     setInterval(sendFakeMessage, 50000);
-}, 50000);
+}, 10000);
 
 function getUserName(){
     $.ajax({
