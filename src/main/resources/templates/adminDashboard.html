@@ -17,6 +17,7 @@
     <div class="container">
         <div class="userData">
             <div class="content">
+                <img src="person.png">
                 <p class="userDataText" th:text="${userName}"></p>
             </div>
         </div>
@@ -26,13 +27,10 @@
                 <p>Projects</p>
             </div>
         </div>
-        <div id="logout" class="userData">
+        <div id="newProject" class="box">
             <div  class="content">
-                <img src="signs.png">
-                <p>Logout</p>
-                <form id="logoutForm" name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-                    <input hidden type="submit" value="Sign Out"/>
-                </form>
+                <img src="project-management.png">
+                <p>Create project</p>
             </div>
         </div>
         <div id="userDashboard" class="box">
@@ -41,18 +39,16 @@
                 <p>Back</p>
             </div>
         </div>
-        <div id="newProject" class="box">
-            <div  class="content">
-                <img src="project-management.png">
-                <p>Create project</p>
+        <div id="chat" class="box">
+            <div class="content">
+                <img src="chat.png">
+                <p>Chat</p>
             </div>
         </div>
-
-
         <div id="newUser" class="box">
             <div class="content">
                 <img src="add.png">
-                <p>New user</p>
+                <p>Add user</p>
             </div>
         </div>
         <div id="userList" class="box">
@@ -73,6 +69,12 @@
                 <p>List of priorities</p>
             </div>
         </div>
+        <div    class="box">
+            <div class="content">
+                <img src="problem_user.png">
+                <p>Users problems</p>
+            </div>
+        </div>
         <div id="newStatus" class="box">
             <div class="content">
                 <img src="project.png">
@@ -85,16 +87,13 @@
                 <p>Status list</p>
             </div>
         </div>
-        <div    class="box">
-            <div class="content">
-                <img src="problem_user.png">
-                <p>Users problems</p>
-            </div>
-        </div>
-        <div id="chat" class="box">
-            <div class="content">
-                <img src="chat.png">
-                <p>Chat</p>
+        <div id="logout" class="userData">
+            <div  class="content">
+                <img src="signs.png">
+                <p>Logout</p>
+                <form id="logoutForm" name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="Sign Out"/>
+                </form>
             </div>
         </div>
 

@@ -40,6 +40,7 @@ function connect() {
 function sendMessage() {
     var messageToSend = document.getElementById('messageToSend').value;
     client.send("/app/chat", {}, JSON.stringify({'message': messageToSend, 'user': userName}));
+    messageToSend.value="";
 }
 
 function sendFakeMessage() {
