@@ -105,6 +105,17 @@ body{
     transition: 0.5s;
 }
 
+.chat-container .box{
+    background: #333;
+    padding: 20px;
+    display: grid;
+    font-size: 20px;
+    place-items: center;
+    text-align: center;
+    color: #fff;
+    transition: 0.5s;
+}
+
 .selectionMenuContainer .box{
     background: #333;
     padding: 20px;
@@ -198,7 +209,10 @@ body{
     margin-bottom: 10px;
 }
 
-
+.main_content .container .box:nth-child(1){
+    grid-column: span 4;
+    grid-row: span 1;
+}
 
 .main_content .container .box:nth-child(2){
     grid-column: span 2;
@@ -446,3 +460,4 @@ td img {
     padding-left: 5px;
     padding-right: 5px;
 }
+
