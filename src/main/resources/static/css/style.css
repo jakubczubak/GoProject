@@ -46,9 +46,10 @@ body{
 @media screen and (max-width: 1000px) {
     .container{
         grid-template-columns: repeat(4, minmax(auto,375px));
-        grid-template-rows: repeat(4, minmax(auto,auto));
+        grid-template-rows: repeat(5, minmax(auto,auto));
     }
 }
+
 
 .loginContainer{
     position: relative;
@@ -56,9 +57,8 @@ body{
     display: grid;
     grid-template-columns: repeat(1, minmax(400px,1fr));
     grid-template-rows: minmax(250px,auto);
-    margin: 40px 40px 40px 40px;
+    margin: 40px 40px 100px 40px;
     grid-auto-flow: dense;
-    grid-gap: 10px;
 }
 
 .selectionMenuContainer{
@@ -298,6 +298,7 @@ body{
     padding: 10px 6px;
     font-size: 25px;
     width: 350px;
+    margin: 10px;
 
 }
 .description {
@@ -429,4 +430,8 @@ td img {
 .socialMedia{
     padding-left: 5px;
     padding-right: 5px;
+}
+
+.pro{
+    background: #70a1ff;
 }

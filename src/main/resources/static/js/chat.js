@@ -28,7 +28,7 @@ function connect() {
     client = Stomp.client(webSocketURL);
     client.connect({}, function (frame) {
         client.subscribe("/topic/messages", function(message){
-            if(JSON.parse(message.body).message==""){
+            if(JSON.parse(message.body).message===""){
                 //do nothing
             }else{
                 showMessage(JSON.parse(message.body).message, JSON.parse(message.body).user)
@@ -40,8 +40,17 @@ function connect() {
 function sendMessage() {
     var messageToSend = document.getElementById('messageToSend').value;
     client.send("/app/chat", {}, JSON.stringify({'message': messageToSend, 'user': userName}));
-    messageToSend.value="";
+    document.getElementById('messageToSend').value = '';
+    document.getElementById('messageToSend').focus();
 }
+
+document.getElementById('messageToSend').addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+
+        event.preventDefault();
+        document.getElementById("sendBtn").click();
+    }
+});
 
 function sendFakeMessage() {
     client.send("/app/chat", {}, JSON.stringify({'message': '', 'user': ''}));
