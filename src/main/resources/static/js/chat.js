@@ -27,6 +27,7 @@ function connect() {
 }
 
 function sendMessage() {
+    client = Stomp.client('wss://go-project-software.herokuapp.com/chat'); //check this!
     var messageToSend = document.getElementById('messageToSend').value;
     var user          = document.getElementById('user').value;
     client.send("/app/chat", {}, JSON.stringify({'message': messageToSend, 'user': user}));
