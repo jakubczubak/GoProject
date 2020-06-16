@@ -20,13 +20,10 @@ public class HomeController {
 
     @GetMapping("/app")
     public String getHomePage(@AuthenticationPrincipal OAuth2User principal,@AuthenticationPrincipal CurrentUser currentUser){
-
         if(currentUser==null){
             String authorizedClientRegistrationId = ((OAuth2AuthenticationToken)((SecurityContextImpl) SecurityContextHolder.getContext()).getAuthentication()).getAuthorizedClientRegistrationId();
             userServiceImpl.save_users_to_DB_who_logged_in_using_oAuth(authorizedClientRegistrationId,principal);
         }
-
-
         return "selectionMenu";
     }
 

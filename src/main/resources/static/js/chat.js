@@ -1,5 +1,6 @@
 var client = null;
 var webSocketURL = null;
+var userName = null;
 
 
 function showMessage(value, user) {
@@ -18,20 +19,31 @@ function showMessage(value, user) {
     respone.appendChild(newResponse);
 }
 
+
+
 function connect() {
+    getUserName();
     getWebSocketURL();
+
     client = Stomp.client(webSocketURL);
     client.connect({}, function (frame) {
         client.subscribe("/topic/messages", function(message){
-            showMessage(JSON.parse(message.body).message, JSON.parse(message.body).user)
+            if(JSON.parse(message.body).message==""){
+                //do nothing
+            }else{
+                showMessage(JSON.parse(message.body).message, JSON.parse(message.body).user)
+            }
         });
     })
 }
 
 function sendMessage() {
     var messageToSend = document.getElementById('messageToSend').value;
-    var user          = document.getElementById('user').value;
-    client.send("/app/chat", {}, JSON.stringify({'message': messageToSend, 'user': user}));
+    client.send("/app/chat", {}, JSON.stringify({'message': messageToSend, 'user': userName}));
+}
+
+function sendFakeMessage() {
+    client.send("/app/chat", {}, JSON.stringify({'message': '', 'user': ''}));
 }
 
 function getWebSocketURL() {
@@ -44,6 +56,26 @@ function getWebSocketURL() {
     }).done(function(result) {
         webSocketURL=result;
 
+    }).fail(function(xhr,status,err) {
+    }).always(function(xhr,status) {
+    });
+}
+
+//Heroku has a timeout limit (55s), so we use this function to not break the connection.
+setTimeout(function() {
+    setInterval(sendFakeMessage, 50000);
+}, 50000);
+
+function getUserName(){
+    $.ajax({
+        url: "/app/userInfo",
+        async: false,
+        data: {},
+        type: "GET",
+        dataType: "text"
+    }).done(function(result) {
+        userName=result;
+        console.log(userName);
     }).fail(function(xhr,status,err) {
     }).always(function(xhr,status) {
     });
