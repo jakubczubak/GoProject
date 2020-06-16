@@ -1,4 +1,5 @@
 var client = null;
+var webSocketURL = null;
 
 
 function showMessage(value, user) {
@@ -18,7 +19,8 @@ function showMessage(value, user) {
 }
 
 function connect() {
-    client = Stomp.client('wss://go-project-software.herokuapp.com/chat'); //check this!
+    getWebSocketURL();
+    client = Stomp.client(webSocketURL);
     client.connect({}, function (frame) {
         client.subscribe("/topic/messages", function(message){
             showMessage(JSON.parse(message.body).message, JSON.parse(message.body).user)
@@ -27,8 +29,22 @@ function connect() {
 }
 
 function sendMessage() {
-    client = Stomp.client('wss://go-project-software.herokuapp.com/chat'); //check this!
     var messageToSend = document.getElementById('messageToSend').value;
     var user          = document.getElementById('user').value;
     client.send("/app/chat", {}, JSON.stringify({'message': messageToSend, 'user': user}));
+}
+
+function getWebSocketURL() {
+    $.ajax({
+        url: "/app/websocket-url",
+        async: false,
+        data: {},
+        type: "GET",
+        dataType: "text"
+    }).done(function(result) {
+        webSocketURL=result;
+
+    }).fail(function(xhr,status,err) {
+    }).always(function(xhr,status) {
+    });
 }
